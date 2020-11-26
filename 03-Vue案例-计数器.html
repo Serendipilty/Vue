@@ -11,19 +11,30 @@
       <!-- <button v-on:click="counter++">+</button> -->
       <!-- <button v-on:click="counter--">-</button> -->
       <button v-on:click="add">+</button>
-      <button v-on:click="sub">-</button>
+      <button @click="sub">-</button>
     </div>
 
     <script src="js\vue.js"></script>
     <script>
+      //语法糖: 简写
+      //proxy 代理
+      var obj = {
+        counter: 0,
+      };
+
       const app = new Vue({
         el: "#app",
-        data: {
-          counter: 0,
-        },
+        data: obj,
+        // {
+        //   counter: 0,
+        // },
         methods: {
-          add: function () {},
-          sub: function () {},
+          add: function () {
+            this.counter++;
+          },
+          sub: function () {
+            this.counter--;
+          },
         },
       });
     </script>

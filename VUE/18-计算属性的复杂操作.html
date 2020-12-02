@@ -10,6 +10,7 @@
   <body>
     <div id="app">
       <h2>总价格:{{totalPrice}}</h2>
+      <h2>总价格:{{getTotalPrice()}}</h2>
     </div>
 
     <!-- 导入 vue 文件 -->
@@ -35,6 +36,16 @@
             // for (let i in this.phone) {
             //   result += this.phone[i].price;
             // }
+
+            for (const phone of this.phone) {
+              result += phone.price;
+            }
+            return result;
+          },
+        },
+        methods: {
+          getTotalPrice: function () {
+            let result = 0;
 
             for (const phone of this.phone) {
               result += phone.price;

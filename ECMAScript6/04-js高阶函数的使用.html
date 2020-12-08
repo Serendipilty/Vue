@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 编程范式: 命令式编程/声明式编程
+      // 编程范式: 面向对象编程(第一公民:对象)/函数式编程(第一公民:函数)
+      // filter/map/reduce
+      const arr = [10, 20, 111, 222, 333, 30, 40];
+
+      let total = arr
+        .filter((n) => n < 100)
+        .map((n) => n * 2)
+        .reduce((preValue, value) => preValue + value);
+      console.log(total);
+
+      let total1 = arr
+        .filter(function (n) {
+          return n < 100;
+        })
+        .map(function (n) {
+          return n * 2;
+        })
+        .reduce(function (preValue, value) {
+          return preValue + value;
+        }, 0);
+      console.log(total1);
+
+      /*
+        filter
+        filter中的回调函数有一个要求:必须返回一个Boolean值
+        true: 返回true时，函数内部会自动将这次回调的n加入到新的数组中
+        false:返回false时，函数内部会过滤掉这次的n
+      */
+      let num1 = arr.filter(function (n) {
+        return n < 100;
+      });
+      console.log(num1);
+
+      /* map */
+      let num2 = num1.map(function (n) {
+        return n * 2;
+      });
+      console.log(num2);
+
+      /* 
+        reduce 
+        reduce作用对数组中所有的内容进行汇总
+        第一次: preValue 0    value 20
+        第二次: preValue 20   value 40
+        第三次: preValue 60   value 60 
+        第四次: preValue 120  value 80
+      */
+      let num3 = num2.reduce(function (preValue, value) {
+        return preValue + value;
+      }, 0);
+      console.log(num3);
+
+      //   // 1.需求: 取出所有小于100的数字
+      //   let num1 = [];
+      //   for (const item of arr) {
+      //     if (item < 100) {
+      //       num1.push(item);
+      //     }
+      //   }
+      //   console.log(num1);
+
+      //   // 2.需求: 将小于100的数字进行转换:全部*2
+      //   let num2 = [];
+      //   for (const item of num1) {
+      //     num2.push(item * 2);
+      //   }
+      //   console.log(num2);
+
+      //   // 3.需求: 将所有数字相加，得到最终的结果
+      //   let total = 0;
+      //   for (const item of num2) {
+      //     total += item;
+      //   }
+      //   console.log(total);
+    </script>
+  </body>
+</html>

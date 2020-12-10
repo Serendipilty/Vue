@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <cpn1></cpn1>
+      <cpn2></cpn2>
+    </div>
+
+    <!-- 导入 vue 文件 -->
+    <script src="js/vue.js"></script>
+    <script>
+      // 1. 全局组件注册的语法糖
+      Vue.component("cpn1", {
+        template: `
+          <div>
+            <h2>我是标题</h2>
+            <p>我是内容</p>
+          </div>
+          `,
+      });
+
+      //   // 1. 创建组件构造器
+      //   const cpn = Vue.extend({
+      //     template: `
+      //       <div>
+      //         <h2>我是标题</h2>
+      //         <p>我是内容</p>
+      //       </div>
+      //       `,
+      //   });
+
+      //   // 2. 注册组件
+      //   Vue.compnent("cpn", cpn);
+
+      // 2. 注册局部组件的语法糖
+      const app = new Vue({
+        el: "#app",
+        data: {},
+        components: {
+          cpn2: {
+            template: `
+          <div>
+            <h2>我是标题</h2>
+            <p>我是内容</p>
+          </div>
+          `,
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

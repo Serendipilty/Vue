@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <cpn></cpn>
+      <cpn>
+        <!-- 获取子组件中的language -->
+        <template slot-scope="slot">
+          <!-- <span v-for="item of slot.data">{{item}} - </span> -->
+          <span>{{slot.data.join(' - ')}}</span>
+        </template>
+      </cpn>
+    </div>
+
+    <template id="cpn">
+      <div>
+        <slot :data="language">
+          <ul>
+            <li v-for="item of language">{{item}}</li>
+          </ul>
+        </slot>
+      </div>
+    </template>
+    <!-- 导入 vue 文件 -->
+    <script src="js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {},
+        components: {
+          cpn: {
+            template: "#cpn",
+            data() {
+              return {
+                language: ["C", "C++", "C#", "Java", "Python", "javaScript"],
+              };
+            },
+          },
+        },
+      });
+    </script>
+  </body>
+</html>

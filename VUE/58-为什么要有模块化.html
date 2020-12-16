@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+        1.全部变量同名问题
+        2.对js文件的依赖顺序是强制性的
+        
+        使用闭包解决
+
+        常用的模块化规范:
+        CommonJS、AMD、CMD、ES6的Modules
+     -->
+    <script>
+      // ES5模块化写法
+      var moduleA = (function () {
+        var obj = {};
+        var name = "A";
+        var age = 20;
+        function sum(num1, num2) {
+          return num1 + num2;
+        }
+        var flag = true;
+        if (flag) {
+          console.log(sum(10, 20));
+        }
+        obj.flag = flag;
+        obj.sum = sum;
+
+        return obj;
+      })();
+
+      // CommonJS写法
+      var name = "A";
+      var age = 20;
+      function sum(num1, num2) {
+        return num1 + num2;
+      }
+      var flag = true;
+      if (flag) {
+        console.log(sum(10, 20));
+      }
+
+      // CommonJS 导出
+      module.exports = {
+        flas,
+        sum,
+      };
+    </script>
+
+    <script>
+      var moduleB = (function () {
+        var obj = {};
+        var name = "B";
+        var flag = false;
+        console.log(name);
+        obj.flag = flag;
+        return obj;
+      })();
+    </script>
+
+    <script>
+      // ES5模块化写法
+      (function () {
+        // 1. 想使用flag
+        if (moduleA.flag) {
+          console.log("打印");
+        }
+        // 2.使用sum函数
+        console.log(moduleA.sum(30, 40));
+      })();
+
+      // CommonJS写法
+      // CommonJS 导入
+      var { flag, sum } = require("module");
+      //   等同
+      var ma = require("module");
+      var flag = ma.flag;
+      var sum = ma.sum;
+    </script>
+
+    <script>
+      (function () {
+        console.log(moduleB.flag);
+      })();
+    </script>
+  </body>
+</html>

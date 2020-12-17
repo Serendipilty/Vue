@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <div id="app">
+      <!-- 1. 在遍历的过程中，没有使用索引值(下标值) -->
+      <ul>
+        <li v-for="item in movies">{{item}}</li>
+      </ul>
+      <!-- 2. 在遍历的过程中，获取索引值 -->
+      <ul>
+        <li v-for="(item,index) in movies">{{index+1}}.{{item}}</li>
+      </ul>
+    </div>
+
+    <!-- 导入 vue 文件 -->
+    <script src="../js/vue.js"></script>
+    <script>
+      const app = new Vue({
+        el: "#app",
+        data: {
+          movies: ["海贼王", "火影忍者", "刀剑神域"],
+        },
+      });
+    </script>
+  </body>
+</html>

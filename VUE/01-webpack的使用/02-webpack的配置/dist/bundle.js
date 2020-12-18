@@ -69,7 +69,7 @@
 
 "use strict";
 Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__info__ = __webpack_require__(2);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_info__ = __webpack_require__(2);
 // 1.使用CommonJs的模块化规范
 const { sum, mul } = __webpack_require__(1);
 
@@ -78,7 +78,7 @@ console.log(mul(20, 30));
 
 // 2. 使用ES6的模块化的规范
 
-console.log(__WEBPACK_IMPORTED_MODULE_0__info__["a" /* name */]);
+console.log(__WEBPACK_IMPORTED_MODULE_0__js_info__["a" /* name */]);
 
 
 /***/ }),

@@ -14,3 +14,12 @@ require("./css/normal.css");
 // 4.依赖less文件
 require("./css/special.less");
 document.write("Hello,Webpack");
+
+// 5.使用Vue进行开发
+import Vue from "vue";
+new Vue({
+  el: "#app",
+  data: {
+    message: "Hello Webpack",
+  },
+});

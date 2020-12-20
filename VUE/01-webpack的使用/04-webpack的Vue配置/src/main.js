@@ -19,6 +19,11 @@ document.write("Hello,Webpack");
 import Vue from "vue";
 new Vue({
   el: "#app",
+  template:`
+    <div>
+        <h2>{{message}}</h2>
+    </div>
+  `,
   data: {
     message: "Hello Webpack",
   },

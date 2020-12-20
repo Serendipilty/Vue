@@ -57,7 +57,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "";
+/******/ 	__webpack_require__.p = "dist/";
 /******/
 /******/ 	// Load entry module and return exports
 /******/ 	return __webpack_require__(__webpack_require__.s = 2);
@@ -224,7 +224,7 @@ var singleton = null;
 var	singletonCounter = 0;
 var	stylesInsertedAtTop = [];
 
-var	fixUrls = __webpack_require__(7);
+var	fixUrls = __webpack_require__(9);
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
@@ -562,32 +562,50 @@ function updateLink (link, options, obj) {
 
 /***/ }),
 /* 2 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/***/ (function(module, exports, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__js_info__ = __webpack_require__(4);
+
+
+var _info = __webpack_require__(3);
+
 // 1.使用CommonJs的模块化规范
-const { sum, mul } = __webpack_require__(3);
+var _require = __webpack_require__(4),
+    sum = _require.sum,
+    mul = _require.mul;
 
 console.log(sum(20, 30));
 console.log(mul(20, 30));
 
 // 2. 使用ES6的模块化的规范
 
-console.log(__WEBPACK_IMPORTED_MODULE_0__js_info__["a" /* name */]);
+console.log(_info.name);
 
 // 3.依赖css文件
 __webpack_require__(5);
 
 // 4.依赖less文件
-__webpack_require__(8);
+__webpack_require__(10);
 document.write("Hello,Webpack");
-
 
 /***/ }),
 /* 3 */
-/***/ (function(module, exports) {
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+var name = exports.name = "ES6导入";
+
+/***/ }),
+/* 4 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
 
 function sum(num1, num2) {
   return num1 + num2;
@@ -597,18 +615,7 @@ function mul(num1, num2) {
   return num1 * num2;
 }
 
-module.exports = { sum, mul };
-
-
-/***/ }),
-/* 4 */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
-
-"use strict";
-const name = "ES6导入";
-/* harmony export (immutable) */ __webpack_exports__["a"] = name;
-
-
+module.exports = { sum: sum, mul: mul };
 
 /***/ }),
 /* 5 */
@@ -665,13 +672,49 @@ if(false) {
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);
+// Imports
+var urlEscape = __webpack_require__(7);
+var ___CSS_LOADER_URL___0___ = urlEscape(__webpack_require__(8));
+
 // Module
-exports.push([module.i, "body {\r\n  background-color: cadetblue;\r\n}\r\n", ""]);
+exports.push([module.i, "body {\r\n  /* background-color: cadetblue; */\r\n  background: url(" + ___CSS_LOADER_URL___0___ + ");\r\n}\r\n", ""]);
 
 
 
 /***/ }),
 /* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+module.exports = function escape(url) {
+  if (typeof url !== 'string') {
+    return url;
+  } // If url is already wrapped in quotes, remove them
+
+
+  if (/^['"].*['"]$/.test(url)) {
+    url = url.slice(1, -1);
+  } // Should url be wrapped?
+  // See https://drafts.csswg.org/css-values-3/#urls
+
+
+  if (/["'() \t\n]/.test(url)) {
+    return '"' + url.replace(/"/g, '\\"').replace(/\n/g, '\\n') + '"';
+  }
+
+  return url;
+};
+
+/***/ }),
+/* 8 */
+/***/ (function(module, exports, __webpack_require__) {
+
+module.exports = __webpack_require__.p + "img/cover.085cbc2a.jpg";
+
+/***/ }),
+/* 9 */
 /***/ (function(module, exports) {
 
 
@@ -766,11 +809,11 @@ module.exports = function (css) {
 
 
 /***/ }),
-/* 8 */
+/* 10 */
 /***/ (function(module, exports, __webpack_require__) {
 
 
-var content = __webpack_require__(9);
+var content = __webpack_require__(11);
 
 if(typeof content === 'string') content = [[module.i, content, '']];
 
@@ -816,7 +859,7 @@ if(false) {
 }
 
 /***/ }),
-/* 9 */
+/* 11 */
 /***/ (function(module, exports, __webpack_require__) {
 
 exports = module.exports = __webpack_require__(0)(false);

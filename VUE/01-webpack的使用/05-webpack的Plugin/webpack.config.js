@@ -1,11 +1,13 @@
 const path = require("path");
 const webpack = require("webpack");
+const HtmlWebpackPlugin = require("html-webpack-plugin");
+
 module.exports = {
   entry: "./src/main.js",
   output: {
     path: path.resolve(__dirname, "dist"), //动态获取路径
     filename: "bundle.js",
-    publicPath: "dist/",
+    // publicPath: "dist/",
   },
   module: {
     rules: [
@@ -66,7 +68,10 @@ module.exports = {
       vue$: "vue/dist/vue.esm.js",
     },
   },
-  plugins:[
-    new webpack.BannerPlugin('最终版权归所有')
-  ]
+  plugins: [
+    new webpack.BannerPlugin("最终版权归所有"),
+    new HtmlWebpackPlugin({
+      template: "index.html",
+    }),
+  ],
 };

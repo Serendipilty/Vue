@@ -17,14 +17,13 @@ document.write("Hello,Webpack");
 
 // 5.使用Vue进行开发
 import Vue from "vue";
+// import App from "./vue/app";
+import App from "./vue/App.vue";
+
 new Vue({
   el: "#app",
-  template:`
-    <div>
-        <h2>{{message}}</h2>
-    </div>
-  `,
-  data: {
-    message: "Hello Webpack",
+  template: "<App/>",
+  components: {
+    App,
   },
 });

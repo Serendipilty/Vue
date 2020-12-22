@@ -1,7 +1,7 @@
 const path = require("path");
 const webpack = require("webpack");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
-
+const UglifyjsWebpackPlugin = require("uglifyjs-webpack-plugin");
 module.exports = {
   entry: "./src/main.js",
   output: {
@@ -73,5 +73,10 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "index.html",
     }),
+    new UglifyjsWebpackPlugin(),
   ],
+  devserver: {
+    contentBase: "./dist",
+    inline: true, 
+  },
 };

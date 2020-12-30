@@ -2,7 +2,8 @@
   <div>
     <h2>用户界面</h2>
     <p>用户相关信息</p>
-    <h2>{{userId}}</h2>
+    <h2>{{ userId }}</h2>
+    <button @click="btnClick">按钮</button>
   </div>
 </template>
 
@@ -12,6 +13,16 @@ export default {
   computed: {
     userId() {
       return this.$route.params.userId;
+    },
+  },
+  // created() {
+  //   console.log("created");
+  //   document.title = "用户";
+  // },
+  methods: {
+    btnClick() {
+      console.log(this.$router);
+      console.log(this.$route);
     },
   },
 };

@@ -23,7 +23,8 @@
 
     <!-- <button @click="homeClick">首页</button> -->
     <!-- <button @click="aboutClick">关于</button> -->
-    <keep-alive><router-view></router-view></keep-alive>
+    
+    <keep-alive exclude="Profile,User"><router-view></router-view></keep-alive>
   </div>
 </template>
 

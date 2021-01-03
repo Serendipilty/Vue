@@ -15,10 +15,13 @@ export default {
       return this.$route.params.userId;
     },
   },
-  // created() {
-  //   console.log("created");
-  //   document.title = "用户";
-  // },
+  created() {
+    console.log("User created");
+    //   document.title = "用户";
+  },
+  destroyed() {
+    console.log("User destroyed");
+  },
   methods: {
     btnClick() {
       console.log(this.$router);

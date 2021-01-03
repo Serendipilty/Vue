@@ -9,6 +9,13 @@
 <script>
 export default {
   name: "Profile",
+  created() {
+    console.log("Profile created");
+    //   document.title = "关于";
+  },
+  destroyed() {
+    console.log("Profile destroyed");
+  },
 };
 </script>
 

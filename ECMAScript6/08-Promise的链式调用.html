@@ -85,7 +85,8 @@
           console.log(res, "第一层的10行处理代码");
 
           // return Promise.resolve(res + "111");
-          return Promise.reject("error");
+          // return Promise.reject("error");
+          throw "error";
         })
         .then((res) => {
           console.log(res, "第二层的10行处理代码");

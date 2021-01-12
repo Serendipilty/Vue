@@ -18,6 +18,14 @@
     <h2>{{ $store.state.info }}</h2>
     <button @click="updateInfo">修改信息</button>
 
+    <h2>----------modules内容----------</h2>
+    <h2>{{ $store.state.a.name }}</h2>
+    <button @click="updateName">修改名字</button>
+    <h2>{{ $store.getters.fullname }}</h2>
+    <h2>{{ $store.getters.fullname2 }}</h2>
+    <h2>{{ $store.getters.fullname3 }}</h2>
+    <button @click="asyncUpdateName">异步修改</button>
+
     <h2>----------Hello Vuex内容----------</h2>
     <hello-vuex></hello-vuex>
   </div>
@@ -66,6 +74,7 @@ export default {
     },
     updateInfo() {
       // this.$store.commit("updateInfo");
+
       // this.$store.dispatch("aUpdateInfo", "actions参数");
       // this.$store.dispatch("aUpdateInfo", () => {
       //   console.log("异步请求完成");
@@ -76,8 +85,17 @@ export default {
       //     console.log("异步请求完成");
       //   },
       // });
-      this.$store.dispatch("aUpdateInfo", "actions参数");
+      this.$store.dispatch("aUpdateInfo", "actions参数").then((res) => {
+        console.log("Promise请求完成");
+        console.log(res);
+      });
     },
+    updateName() {
+      this.$store.commit("updateName", "索隆");
+    },
+    asyncUpdateName(){
+      this.$store.dispatch('aUpdateName')
+    }
   },
 };
 </script>

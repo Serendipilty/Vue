@@ -26,8 +26,7 @@ export default {
 <style>
 .goods-item {
   width: 48%;
-  padding: 0 2px;
-  padding-bottom: 20px;
+  padding-bottom: 8px;
 }
 .goods-item img {
   width: 100%;
@@ -43,5 +42,22 @@ export default {
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+}
+.goods-info .price {
+  color: var(--color-high-text);
+}
+.goods-info .collect {
+  position: relative;
+  margin-left: 20px;
+}
+
+.goods-info .collect::before {
+  content: "";
+  position: absolute;
+  left: -15px;
+  top: -1px;
+  width: 14px;
+  height: 14px;
+  background: url("~assets/img/common/collect.svg") 0 0/14px 14px;
 }
 </style>

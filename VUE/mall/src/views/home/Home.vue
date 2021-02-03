@@ -3,16 +3,24 @@
     <nav-bar class="home-nav">
       <div slot="center">小蓝书</div>
     </nav-bar>
-    <home-swiper :banners="banners"></home-swiper>
-    <recommend-view :recommends="recommends"></recommend-view>
-    <feature-view></feature-view>
-    <tab-control
-      class="tab-control"
-      :titles="['流行', '新款', '精选']"
-      @tabClick="tabClick"
+    <scroll
+      class="content"
+      ref="scroll"
+      :probe-type="3"
+      @scroll="contentScroll"
     >
-    </tab-control>
-    <goods-list :goods="showGoods"></goods-list>
+      <home-swiper :banners="banners"></home-swiper>
+      <recommend-view :recommends="recommends"></recommend-view>
+      <feature-view></feature-view>
+      <tab-control
+        class="tab-control"
+        :titles="['流行', '新款', '精选']"
+        @tabClick="tabClick"
+      >
+      </tab-control>
+      <goods-list :goods="showGoods"></goods-list>
+    </scroll>
+    <back-top @click.native="backClick" v-show="isShowBackTop"></back-top>
   </div>
 </template>
 
@@ -24,6 +32,8 @@ import FeatureView from "./childComps/FeatureView.vue";
 import NavBar from "components/common/navbar/NavBar";
 import TabControl from "components/content/tabControl/TabControl.vue";
 import GoodsList from "components/content/goods/GoodsList";
+import Scroll from "components/common/scroll/Scroll";
+import BackTop from "components/content/backTop/BackTop.vue";
 
 import { getHomeMultidata, getHomeGoods } from "network/home";
 
@@ -36,6 +46,8 @@ export default {
     NavBar,
     TabControl,
     GoodsList,
+    Scroll,
+    BackTop,
   },
   data() {
     return {
@@ -56,6 +68,7 @@ export default {
         },
       },
       currentType: "pop",
+      isShowBackTop: false,
     };
   },
   computed: {
@@ -89,6 +102,12 @@ export default {
       }
     },
 
+    backClick() {
+      this.$refs.scroll.scrollTo(0, 0);
+    },
+    contentScroll(prosition) {
+      this.isShowBackTop = -prosition.y > 1000;
+    },
     /* 
     网络请求相关的方法
     */
@@ -111,11 +130,9 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
 #home {
   margin-top: 44px;
-
-  margin-bottom: 1000px;
 }
 .home-nav {
   position: fixed;
@@ -129,5 +146,13 @@ export default {
 .tab-control {
   position: sticky;
   top: 44px;
+}
+.content {
+  position: absolute;
+  top: 44px;
+  bottom: 49px;
+  left: 0;
+  right: 0;
+  overflow: hidden;
 }
 </style>

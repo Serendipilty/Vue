@@ -6,7 +6,7 @@
     <tab-control
       :titles="['流行', '新款', '精选']"
       @tabClick="tabClick"
-      ref="tabControl"
+      ref="tabControl1"
       class="tab-control"
       v-show="isTabFixed"
     >
@@ -28,7 +28,7 @@
       <tab-control
         :titles="['流行', '新款', '精选']"
         @tabClick="tabClick"
-        ref="tabControl"
+        ref="tabControl2"
       >
       </tab-control>
       <goods-list :goods="showGoods"></goods-list>
@@ -85,12 +85,20 @@ export default {
       isShowBackTop: false,
       tabOffsetTop: 0,
       isTabFixed: false,
+      saveY: 0,
     };
   },
   computed: {
     showGoods() {
       return this.goods[this.currentType].list;
     },
+  },
+  activated() {
+    this.$refs.scroll.scrollTo(0, this.saveY, 0);
+    this.$refs.scroll.refresh();
+  },
+  deactivated() {
+    this.saveY = this.$refs.scroll.getScrollY();
   },
   created() {
     // 1. 请求多个数据
@@ -123,6 +131,8 @@ export default {
           this.currentType = "sell";
           break;
       }
+      this.$refs.tabControl1.currentIndex = index;
+      this.$refs.tabControl2.currentIndex = index;
     },
 
     backClick() {
@@ -142,7 +152,7 @@ export default {
 
     swiperImageLoad() {
       // 所有的组件都有一个属性$el:用于获取组件中的元素
-      this.tabOffsetTop = this.$refs.tabControl.$el.offsetTop;
+      this.tabOffsetTop = this.$refs.tabControl2.$el.offsetTop;
     },
     /* 
     网络请求相关的方法

@@ -9,6 +9,7 @@
         :detailInfo="detailInfo"
         @imageLoad="imageLoad"
       ></detail-goods-info>
+      <detail-param-info :paramInfo="paramInfo"></detail-param-info>
     </scroll>
   </div>
 </template>
@@ -19,10 +20,11 @@ import DetailSwiper from "./childComps/DetailSwiper.vue";
 import DetailBaseInfo from "./childComps/DetailBaseInfo.vue";
 import DetailShopInfo from "./childComps/DetailShopInfo.vue";
 import DetailGoodsInfo from "./childComps/DetailGoodsInfo.vue";
+import DetailParamInfo from "./childComps/DetailParamInfo.vue";
 
 import Scroll from "components/common/scroll/Scroll.vue";
 
-import { getDetail, Goods, Shop } from "network/detail";
+import { getDetail, Goods, Shop, GoodsParam } from "network/detail";
 
 export default {
   name: "Detail",
@@ -32,6 +34,7 @@ export default {
     DetailBaseInfo,
     DetailShopInfo,
     DetailGoodsInfo,
+    DetailParamInfo,
     Scroll,
   },
   data() {
@@ -41,6 +44,7 @@ export default {
       goods: {},
       shop: {},
       detailInfo: {},
+      paramInfo: {},
     };
   },
   created() {
@@ -66,6 +70,12 @@ export default {
 
       // 4. 保存商品的详情数据
       this.detailInfo = data.detailInfo;
+
+      // 5. 获取参数的信息
+      this.paramInfo = new GoodsParam(
+        data.itemParams.info,
+        data.itemParams.rule
+      );
     });
   },
 

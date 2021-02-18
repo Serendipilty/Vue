@@ -179,9 +179,6 @@ export default {
 </script>
 
 <style scoped>
-#home {
-  /* margin-top: 44px; */
-}
 .home-nav {
   /* 在使用浏览器原生滚动时，为了让导航不跟随一起滚动 */
   /* position: fixed;

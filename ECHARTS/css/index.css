@@ -29,10 +29,16 @@ header {
   font-family: weaponeer;
 }
 
-.mainbox {
+.mainbox,
+.plan-right-top,
+.plan-right-bottom,
+.state-right,
+.middle-chart {
   display: flex;
 }
-.mainbox-left {
+.mainbox-left,
+.mainbox-right,
+.middle-chart div {
   flex: 1;
 }
 
@@ -139,10 +145,6 @@ header {
   font-size: 12px;
 }
 
-.plan-right-top,
-.plan-right-bottom {
-  display: flex;
-}
 .plan-right-num {
   margin-right: 26px;
 }
@@ -314,20 +316,20 @@ header {
     rgb(1, 195, 241)
   );
 }
-.state-right {
-  display: flex;
-}
+
 .state-right div {
   width: 124px;
   height: 124px;
   margin: 0 5px;
 }
 
-.mainbox-right {
-  flex: 1;
-}
 .bar {
   margin-bottom: 19px;
+}
+.bar1,
+.bar2,
+.work {
+  margin-bottom: 16px;
 }
 .bar .chart {
   height: 228px;
@@ -344,12 +346,14 @@ header {
   overflow: hidden;
 }
 
+.work .list table {
+  line-height: 20px;
+}
 .list table {
   width: 100%;
   table-layout: fixed;
   color: #fff;
   text-align: center;
-  line-height: 20px;
 }
 .list thead {
   width: 100%;
@@ -369,4 +373,9 @@ header {
 .list tbody tr:nth-child(odd) {
   background-color: #001027;
   color: #4e87ba;
+}
+.warning {
+  height: 241px;
+  margin-top: 19px;
+  overflow: hidden;
 }

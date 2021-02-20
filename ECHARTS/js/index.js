@@ -425,3 +425,161 @@ var yieldOption = {
   ],
 };
 yieldHistogram.setOption(yieldOption);
+
+var moveHistogram = echarts.init(document.getElementById("move"));
+var moveData = [
+  {
+    name: "设备1",
+    value: 100,
+  },
+  {
+    name: "设备1",
+    value: 90,
+  },
+  {
+    name: "设备1",
+    value: 85,
+  },
+  {
+    name: "设备1",
+    value: 80,
+  },
+  {
+    name: "设备1",
+    value: 75,
+  },
+  {
+    name: "设备1",
+    value: 65,
+  },
+  {
+    name: "设备1",
+    value: 60,
+  },
+  {
+    name: "设备1",
+    value: 55,
+  },
+];
+
+var moveOption = {
+  grid: {
+    top: "16%",
+    left: "2%",
+    right: "12%",
+    bottom: "8%",
+    containLabel: true,
+  },
+  tooltip: {
+    trigger: "axis",
+    axisPointer: {
+      type: "shadow", // 'line' | 'shadow'
+    },
+    backgroundColor: "#fff",
+    formatter: function(params) {
+       var res =  params[0].name + '<br/>' +
+           "<span style='display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:rgba(20,122,241,0.9)'></span>" +
+           '移动率 : ' + params[0].value;
+          
+       return res;
+   
+   },
+    textStyle: {
+       color: "black" //设置文字颜色
+     },
+  },
+
+  xAxis: [
+    {
+      type: "value",
+      min: 0,
+      axisLabel: {
+        show: false,
+      },
+      axisLine: {
+        show: false,
+      },
+      axisTick: {
+        show: false, // 坐标轴小标记
+      },
+      splitLine: {
+        show: false, // 是否显示分割线
+      },
+    },
+  ],
+  yAxis: {
+    type: "category",
+    position: "left",
+    inverse: true,
+    axisLabel: {
+      textStyle: {
+        color: "#5d9fd9",
+        fontSize: 14,
+        fontWeight: 700,
+      },
+    },
+    axisLine: {
+      show: false,
+    },
+    axisTick: {
+      show: false, // 坐标轴小标记
+    },
+    splitLine: {
+      show: false,
+    },
+    data: (function (data) {
+      var arr = [];
+      data.forEach(function (items) {
+        arr.push(items.name);
+      });
+      return arr;
+    })(moveData), // 载入y轴数据
+  },
+  series: [
+    {
+      type: "bar",
+      name: "移动率",
+      zlevel: 1,
+      barGap: "-100%",
+      label: {
+        normal: {
+          show: false,
+        },
+      },
+      barWidth: 30,
+    },
+    {
+      type: "bar",
+      label: {
+        normal: {
+          show: true,
+          position: "right",
+          textStyle: {
+            color: "#65abe7",
+            fontSize: 16,
+            fontWeight: 700,
+          },
+          formatter: "{c}" + "%",
+        },
+      },
+      barWidth: 14,
+      itemStyle: {
+        normal: {
+          color: new echarts.graphic.LinearGradient(0, 0, 1, 0, [
+            {
+              offset: 0,
+              color: "#157af1",
+            },
+            {
+              offset: 1,
+              color: "#00c5f1",
+            },
+          ]),
+        },
+      },
+      data: moveData, // 载入数据(内含自定义参数)
+    },
+  ],
+};
+
+moveHistogram.setOption(moveOption);

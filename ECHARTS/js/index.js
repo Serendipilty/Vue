@@ -464,9 +464,9 @@ var moveData = [
 
 var moveOption = {
   grid: {
-    top: "16%",
-    left: "2%",
-    right: "12%",
+    top: "14%",
+    left: "4%",
+    right: "16%",
     bottom: "8%",
     containLabel: true,
   },
@@ -476,17 +476,19 @@ var moveOption = {
       type: "shadow", // 'line' | 'shadow'
     },
     backgroundColor: "#fff",
-    formatter: function(params) {
-       var res =  params[0].name + '<br/>' +
-           "<span style='display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:rgba(20,122,241,0.9)'></span>" +
-           '移动率 : ' + params[0].value;
-          
-       return res;
-   
-   },
     textStyle: {
-       color: "black" //设置文字颜色
-     },
+      color: "black", //设置文字颜色
+    },
+    formatter: function (params) {
+      var res =
+        params[0].name +
+        "<br/>" +
+        "<span style='display:inline-block;margin-right:5px;border-radius:10px;width:9px;height:9px;background-color:rgba(20,122,241,0.9)'></span>" +
+        "移动率 : " +
+        params[0].value;
+
+      return res;
+    },
   },
 
   xAxis: [
@@ -514,7 +516,7 @@ var moveOption = {
     axisLabel: {
       textStyle: {
         color: "#5d9fd9",
-        fontSize: 14,
+        fontSize: 10,
         fontWeight: 700,
       },
     },
@@ -556,7 +558,7 @@ var moveOption = {
           position: "right",
           textStyle: {
             color: "#65abe7",
-            fontSize: 16,
+            fontSize: 14,
             fontWeight: 700,
           },
           formatter: "{c}" + "%",

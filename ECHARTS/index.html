@@ -10,15 +10,12 @@
     <script src="./js/echarts.min.js"></script>
   </head>
   <body>
-    <h2 class="title">ZQL-SMT-1</h2>
+    <header>ZQL-SMT-1</header>
     <div class="warp">
-      <div class="time">
-        2021-02-05
-        <span>11:58:16</span>
-      </div>
-      <div class="board">
-        <div class="board-left">
-          <div class="plan frame">
+      <div class="showTime">2021-01-01 00:00:00</div>
+      <section class="mainbox">
+        <div class="mainbox-left">
+          <div class="plan panel">
             <h3>计划与完工数量</h3>
             <div class="plan-left">
               <img src="./images/portrait.jpg" alt="" />
@@ -50,16 +47,16 @@
                 </div>
               </div>
             </div>
-            <div class="frame-foot"></div>
+            <div class="panel-foot"></div>
           </div>
-          <div class="move frame">
+          <div class="panel bar1">
             <h3>设备移动率</h3>
-            <div id="move" class="move-histogram"></div>
-            <div class="frame-foot"></div>
+            <div class="chart"></div>
+            <div class="panel-foot"></div>
           </div>
           <div class="bad"></div>
         </div>
-        <div class="board-middle">
+        <div class="mainbox-middle">
           <div class="state">
             <div class="state-item">
               <div class="state-left">
@@ -92,8 +89,8 @@
                 </div>
               </div>
               <div class="state-right">
-                <div id="FPY" class="state-right-fpy"></div>
-                <div id="UPH" class="state-right-uph"></div>
+                <div class="state-right-fpy"></div>
+                <div class="state-right-uph"></div>
               </div>
             </div>
             <div class="state-item">
@@ -127,25 +124,136 @@
                 </div>
               </div>
               <div class="state-right">
-                <div id="FPY" class="state-right-fpy"></div>
-                <div id="UPH" class="state-right-uph"></div>
+                <div class="state-right-fpy"></div>
+                <div class="state-right-uph"></div>
               </div>
             </div>
           </div>
-          <div class="work"></div>
+          <div class="panel work">
+            <h3>制令单信息</h3>
+            <div class="list">
+              <table>
+                <thead>
+                  <tr>
+                    <th>制令单号</th>
+                    <th>线体</th>
+                    <th>订单数量</th>
+                    <th>完工数量</th>
+                    <th>计划完成时间</th>
+                    <th>状态</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Z-A19090401-01-01</td>
+                    <td>ZQL-SMT-1XIAN</td>
+                    <td>200</td>
+                    <td>0</td>
+                    <td>2019-09-13 10:55:00</td>
+                    <td>投产</td>
+                  </tr>
+                  <tr>
+                    <td>Z-A19090401-01-01</td>
+                    <td>ZQL-SMT-1XIAN</td>
+                    <td>200</td>
+                    <td>0</td>
+                    <td>2019-09-13 10:55:00</td>
+                    <td>投产</td>
+                  </tr>
+                  <tr>
+                    <td>Z-A19090401-01-01</td>
+                    <td>ZQL-SMT-1XIAN</td>
+                    <td>200</td>
+                    <td>0</td>
+                    <td>2019-09-13 10:55:00</td>
+                    <td>投产</td>
+                  </tr>
+                  <tr>
+                    <td>Z-A19090401-01-01</td>
+                    <td>ZQL-SMT-1XIAN</td>
+                    <td>200</td>
+                    <td>0</td>
+                    <td>2019-09-13 10:55:00</td>
+                    <td>投产</td>
+                  </tr>
+                  <tr>
+                    <td>Z-A19090401-01-01</td>
+                    <td>ZQL-SMT-1XIAN</td>
+                    <td>200</td>
+                    <td>0</td>
+                    <td>2019-09-13 10:55:00</td>
+                    <td>投产</td>
+                  </tr>
+                  <tr>
+                    <td>Z-A19090401-01-01</td>
+                    <td>ZQL-SMT-1XIAN</td>
+                    <td>200</td>
+                    <td>0</td>
+                    <td>2019-09-13 10:55:00</td>
+                    <td>投产</td>
+                  </tr>
+                  <tr>
+                    <td>Z-A19090401-01-01</td>
+                    <td>ZQL-SMT-1XIAN</td>
+                    <td>200</td>
+                    <td>0</td>
+                    <td>2019-09-13 10:55:00</td>
+                    <td>投产</td>
+                  </tr>
+                  <tr>
+                    <td>Z-A19090401-01-01</td>
+                    <td>ZQL-SMT-1XIAN</td>
+                    <td>200</td>
+                    <td>0</td>
+                    <td>2019-09-13 10:55:00</td>
+                    <td>投产</td>
+                  </tr>
+                  <tr>
+                    <td>Z-A19090401-01-01</td>
+                    <td>ZQL-SMT-1XIAN</td>
+                    <td>200</td>
+                    <td>0</td>
+                    <td>2019-09-13 10:55:00</td>
+                    <td>投产</td>
+                  </tr>
+                  <tr>
+                    <td>Z-A19090401-01-01</td>
+                    <td>ZQL-SMT-1XIAN</td>
+                    <td>200</td>
+                    <td>0</td>
+                    <td>2019-09-13 10:55:00</td>
+                    <td>投产</td>
+                  </tr>
+                  <tr>
+                    <td>Z-A19090401-01-01</td>
+                    <td>ZQL-SMT-1XIAN</td>
+                    <td>200</td>
+                    <td>0</td>
+                    <td>2019-09-13 10:55:00</td>
+                    <td>投产</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+            <div class="panel-foot"></div>
+          </div>
           <div class="contrast"></div>
           <div class="efficiency"></div>
         </div>
-        <div class="board-right">
-          <div class="yield frame">
+        <div class="mainbox-right">
+          <div class="panel bar">
             <h3>时段产量</h3>
-            <div id="yield" class="yield-histogram"></div>
-            <div class="frame-foot"></div>
+            <div class="chart"></div>
+            <div class="panel-foot"></div>
           </div>
-          <div class="time-interval"></div>
+          <div class="panel bar2">
+            <h3>时段直通车</h3>
+            <div class="chart"></div>
+            <div class="panel-foot"></div>
+          </div>
           <div class="early-warning"></div>
         </div>
-      </div>
+      </section>
     </div>
     <script src="./js/index.js"></script>
   </body>

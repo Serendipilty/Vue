@@ -7,6 +7,7 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./css/index.css" />
+    <script src="./js/echarts.min.js"></script>
   </head>
   <body>
     <h2 class="title">ZQL-SMT-1</h2>
@@ -15,80 +16,137 @@
         2021-02-05
         <span>11:58:16</span>
       </div>
-      <div class="board-top">
-        <div class="plan frame">
-          <h3>计划与完工数量</h3>
-          <div class="plan-left">
-            <img src="./images/portrait.jpg" alt="" />
-            <span>嘻嘻嘻</span>
-          </div>
-          <div class="plan-right">
-            <div class="plan-right-top">
-              <div class="plan-right-num">
-                计划数量
-                <span>8942154</span>
+      <div class="board">
+        <div class="board-left">
+          <div class="plan frame">
+            <h3>计划与完工数量</h3>
+            <div class="plan-left">
+              <img src="./images/portrait.jpg" alt="" />
+              <span>嘻嘻嘻</span>
+            </div>
+            <div class="plan-right">
+              <div class="plan-right-top">
+                <div class="plan-right-num">
+                  计划数量
+                  <span>8942154</span>
+                </div>
+                <div class="plan-right-num">
+                  完工数量
+                  <span>7942154</span>
+                </div>
               </div>
-              <div class="plan-right-num">
-                完工数量
-                <span>7942154</span>
+              <div class="plan-right-bottom">
+                <div class="plan-right-rate">
+                  总完成率
+                  <div><span>35%</span></div>
+                </div>
+                <div class="plan-right-rate">
+                  总通过率
+                  <div><span>96%</span></div>
+                </div>
+                <div class="plan-right-rate">
+                  PPM
+                  <div><span>6584</span></div>
+                </div>
               </div>
             </div>
-            <div class="plan-right-bottom">
-              <div class="plan-right-rate">
-                总完成率
-                <div><span>35%</span></div>
-              </div>
-              <div class="plan-right-rate">
-                总通过率
-                <div><span>96%</span></div>
-              </div>
-              <div class="plan-right-rate">
-                PPM
-                <div><span>6584</span></div>
-              </div>
-            </div>
+            <div class="frame-foot"></div>
           </div>
+          <div class="move frame">
+            <h3>设备移动率</h3>
+            <div id="move" class="move-histogram"></div>
+            <div class="frame-foot"></div>
+          </div>
+          <div class="bad"></div>
         </div>
-        <div class="state">
-          <div class="state-item">
-            <div class="state-left">
-              <div class="state-data">
-                <div class="state-model">
-                  ZgL-ZZ-5XIAN
-                  <div>
-                    <a href="#">
-                      <img src="./images/play.jpg" alt="" />
-                      线体状态
-                    </a>
-                    <span>空闲</span>
+        <div class="board-middle">
+          <div class="state">
+            <div class="state-item">
+              <div class="state-left">
+                <div class="state-data">
+                  <div class="state-model">
+                    ZgL-ZZ-5XIAN
+                    <div>
+                      <a href="#">
+                        <img src="./images/play.jpg" alt="" />
+                        线体状态
+                      </a>
+                      <span>空闲</span>
+                    </div>
+                  </div>
+                  <div class="division"></div>
+                  <div class="state-param">
+                    <div class="state-param-item">
+                      <span>机种</span>2019.1474
+                    </div>
+                    <div class="state-param-item"><span>PPM</span>57</div>
+                    <div class="state-param-item"><span>规格</span>89%</div>
+                    <div class="state-param-item">
+                      <span>延时</span>13451.2H
+                    </div>
                   </div>
                 </div>
-                <div class="division"></div>
-                <div class="state-param">
-                  <div class="state-param-item"><span>机种</span>2019.1474</div>
-                  <div class="state-param-item"><span>PPM</span>57</div>
-                  <div class="state-param-item"><span>规格</span>89%</div>
-                  <div class="state-param-item"><span>延时</span>13451.2H</div>
+                <div class="state-progress">
+                  <span class="progress-bar"></span>
+                  <span>500/1000</span>
                 </div>
               </div>
-              <div class="state-progress"></div>
+              <div class="state-right">
+                <div id="FPY" class="state-right-fpy"></div>
+                <div id="UPH" class="state-right-uph"></div>
+              </div>
             </div>
-            <div class="state-right"></div>
+            <div class="state-item">
+              <div class="state-left">
+                <div class="state-data">
+                  <div class="state-model">
+                    ZgL-ZZ-5XIAN
+                    <div>
+                      <a href="#">
+                        <img src="./images/play.jpg" alt="" />
+                        线体状态
+                      </a>
+                      <span>空闲</span>
+                    </div>
+                  </div>
+                  <div class="division"></div>
+                  <div class="state-param">
+                    <div class="state-param-item">
+                      <span>机种</span>2019.1474
+                    </div>
+                    <div class="state-param-item"><span>PPM</span>57</div>
+                    <div class="state-param-item"><span>规格</span>89%</div>
+                    <div class="state-param-item">
+                      <span>延时</span>13451.2H
+                    </div>
+                  </div>
+                </div>
+                <div class="state-progress">
+                  <span class="progress-bar"></span>
+                  <span>500/1000</span>
+                </div>
+              </div>
+              <div class="state-right">
+                <div id="FPY" class="state-right-fpy"></div>
+                <div id="UPH" class="state-right-uph"></div>
+              </div>
+            </div>
           </div>
+          <div class="work"></div>
+          <div class="contrast"></div>
+          <div class="efficiency"></div>
         </div>
-        <div class="yield"></div>
-      </div>
-      <div class="board-middle">
-        <div class="move"></div>
-        <div class="work"></div>
-        <div class="time-interval"></div>
-      </div>
-      <div class="board-bottom">
-        <div class="bad"></div>
-        <div class="contrast"></div>
-        <div class="efficiency"></div>
-        <div class="early-warning"></div>
+        <div class="board-right">
+          <div class="yield frame">
+            <h3>时段产量</h3>
+            <div id="yield" class="yield-histogram"></div>
+            <div class="frame-foot"></div>
+          </div>
+          <div class="time-interval"></div>
+          <div class="early-warning"></div>
+        </div>
       </div>
     </div>
+    <script src="./js/index.js"></script>
   </body>
 </html>

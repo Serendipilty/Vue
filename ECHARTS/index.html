@@ -7,7 +7,6 @@
     <title>Document</title>
     <link rel="stylesheet" href="./css/base.css" />
     <link rel="stylesheet" href="./css/index.css" />
-    <script src="./js/echarts.min.js"></script>
   </head>
   <body>
     <header>ZQL-SMT-1</header>
@@ -25,25 +24,25 @@
               <div class="plan-right-top">
                 <div class="plan-right-num">
                   计划数量
-                  <span>8942154</span>
+                  <span id="planNumber">8942154</span>
                 </div>
                 <div class="plan-right-num">
                   完工数量
-                  <span>7942154</span>
+                  <span id="fulfilNumber">7942154</span>
                 </div>
               </div>
               <div class="plan-right-bottom">
                 <div class="plan-right-rate">
                   总完成率
-                  <div><span>35%</span></div>
+                  <div><span id="fulfil">35%</span></div>
                 </div>
                 <div class="plan-right-rate">
                   总通过率
-                  <div><span>96%</span></div>
+                  <div><span id="adopt">96%</span></div>
                 </div>
                 <div class="plan-right-rate">
                   PPM
-                  <div><span>6584</span></div>
+                  <div><span id="PPM">6584</span></div>
                 </div>
               </div>
             </div>
@@ -54,7 +53,7 @@
             <div class="chart"></div>
             <div class="panel-foot"></div>
           </div>
-          <div class="panel bad">
+          <div class="panel pie">
             <h3>前五大不良</h3>
             <div class="chart"></div>
             <div class="panel-foot"></div>
@@ -92,9 +91,8 @@
                   <span>500/1000</span>
                 </div>
               </div>
-              <div class="state-right">
-                <div class="state-right-fpy"></div>
-                <div class="state-right-uph"></div>
+              <div class="state-right meter">
+                <div class="chart"></div>
               </div>
             </div>
             <div class="state-item">
@@ -127,9 +125,42 @@
                   <span>500/1000</span>
                 </div>
               </div>
-              <div class="state-right">
-                <div class="state-right-fpy"></div>
-                <div class="state-right-uph"></div>
+              <div class="state-right meter">
+                <div class="chart"></div>
+              </div>
+            </div>
+            <div class="state-item">
+              <div class="state-left">
+                <div class="state-data">
+                  <div class="state-model">
+                    ZgL-ZZ-5XIAN
+                    <div>
+                      <a href="#">
+                        <img src="./images/play.jpg" alt="" />
+                        线体状态
+                      </a>
+                      <span>空闲</span>
+                    </div>
+                  </div>
+                  <div class="division"></div>
+                  <div class="state-param">
+                    <div class="state-param-item">
+                      <span>机种</span>2019.1474
+                    </div>
+                    <div class="state-param-item"><span>PPM</span>57</div>
+                    <div class="state-param-item"><span>规格</span>89%</div>
+                    <div class="state-param-item">
+                      <span>延时</span>13451.2H
+                    </div>
+                  </div>
+                </div>
+                <div class="state-progress">
+                  <span class="progress-bar"></span>
+                  <span>500/1000</span>
+                </div>
+              </div>
+              <div class="state-right meter">
+                <div class="chart"></div>
               </div>
             </div>
           </div>
@@ -242,15 +273,28 @@
             <div class="panel-foot"></div>
           </div>
           <div class="middle-chart">
-            <div class="panel contrast">
+            <div class="panel line">
               <h3>直通率对比</h3>
               <div class="chart"></div>
               <div class="panel-foot"></div>
             </div>
-            <div class="panel efficiency">
+            <div class="panel bar3">
               <h3>线体效率对比</h3>
               <div class="chart"></div>
-              <div class="panel-foot"></div>
+              <div class="target">
+                <div class="target-box">
+                  <div class="target-num">
+                    4896523
+                    <span>目标</span>
+                  </div>
+                </div>
+                <div class="target-box">
+                  <div class="target-num">
+                    5896523
+                    <span>计划</span>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </div>
@@ -350,6 +394,8 @@
         </div>
       </section>
     </div>
+    <script src="./js/echarts.min.js"></script>
+    <script src="./js/jquery.min.js"></script>
     <script src="./js/index.js"></script>
   </body>
 </html>

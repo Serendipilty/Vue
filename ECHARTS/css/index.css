@@ -32,13 +32,13 @@ header {
 .mainbox,
 .plan-right-top,
 .plan-right-bottom,
-.state-right,
-.middle-chart {
+.middle-chart,
+.bar3 {
   display: flex;
 }
 .mainbox-left,
 .mainbox-right,
-.middle-chart div {
+.middle-chart > div {
   flex: 1;
 }
 
@@ -186,8 +186,10 @@ header {
 .mainbox-middle {
   flex: 2;
   margin: 0 14px;
+  overflow: hidden;
 }
 .state {
+  position: relative;
   height: 230px;
   margin-bottom: 19px;
   overflow: hidden;
@@ -316,13 +318,12 @@ header {
     rgb(1, 195, 241)
   );
 }
-
-.state-right div {
-  width: 124px;
-  height: 124px;
-  margin: 0 5px;
+.meter {
+  width: 247px;
 }
-
+.meter .chart {
+  height: 100px;
+}
 .bar {
   margin-bottom: 19px;
 }
@@ -336,11 +337,19 @@ header {
 }
 
 .bar1 .chart,
-.bar2 .chart {
+.bar2 .chart,
+.bar3 .chart,
+.pie .chart,
+.line .chart {
   height: 260px;
 }
 
-.work .list {
+.bar3 .chart {
+  flex: 6;
+}
+
+.work .list,
+.warning .list {
   height: 241px;
   margin-top: 19px;
   overflow: hidden;
@@ -374,8 +383,79 @@ header {
   background-color: #001027;
   color: #4e87ba;
 }
-.warning {
-  height: 241px;
-  margin-top: 19px;
-  overflow: hidden;
+
+.target {
+  flex: 4;
+  margin-top: 64px;
+}
+
+.target-box {
+  position: relative;
+  width: 137px;
+  margin: auto;
+  margin-bottom: 8px;
+  border: 1px solid #4d5969;
+  border-left: none;
+  border-right: none;
+}
+.target-box::before {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #00bee9;
+}
+.target-box::after {
+  content: "";
+  display: block;
+  position: absolute;
+  top: -2px;
+  right: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #00bee9;
+}
+.target-num {
+  width: 123px;
+  height: 42px;
+  padding: 6px 0;
+  margin: 3px auto;
+  background-color: #0c3155;
+  font-size: 15px;
+  text-shadow: 0px 0px 10px #fff;
+  text-align: center;
+}
+
+.target-num::before {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #00bee9;
+}
+.target-num::after {
+  content: "";
+  display: block;
+  position: absolute;
+  bottom: -2px;
+  right: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background-color: #00bee9;
+}
+.target-num span {
+  display: block;
+  margin-top: 12px;
+  font-size: 11px;
+  line-height: 15px;
 }

@@ -1,7 +1,7 @@
 <template>
-  <div class="shop-info">
+  <div class="shop-info" v-if="Object.keys(shop).length !== 0">
     <div class="shop-top">
-      <img :src="showImage" />
+      <img :src="shop.logo" />
       <span class="title">{{ shop.name }}</span>
     </div>
     <div class="shop-middle">
@@ -49,22 +49,14 @@ export default {
       },
     },
   },
-  data() {
-    return {};
-  },
-  computed: {
-    showImage() {
-      return "http:" + this.shop.logo;
-    },
-  },
   filters: {
-    sellCountFilter: function (value) {
-      if (value < 10000) return value;
-      return (value / 10000).toFixed(1) + "万";
+    sellCountFilter(value) {
+      let result = value;
+      if (value > 10000) {
+        result = (value / 10000).toFixed(1) + "万";
+      }
+      return result;
     },
-  },
-  mounted() {
-    console.log(this.shop);
   },
 };
 </script>

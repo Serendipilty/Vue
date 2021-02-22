@@ -48,45 +48,17 @@ function time() {
 
 (function () {
   var state = document.querySelector(".state");
-  var stateItem = state.children[0];
-  var stateItem1 = state.children;
-  var h = stateItem.offsetHeight + 10;
-  console.log(h);
-  var index = 0;
-  // 定时器自动轮播图片
-  var timer = setInterval(function () {
-    index++;
-    var translateY = -index * h;
-    state.style.transition = "all .3s";
-    state.style.transform = "translateY(" + translateY + "px)";
-  }, 2000);
-  // 等过渡完成之后，再去判断 监听过渡完成的事件 transitionend
-  state.addEventListener("transitionend", function () {
-    // 无缝滚动
-    if (index >= stateItem1.length) {
-      index = 0;
-      // 去掉过渡效果 快速跳到目标位置
-      state.style.transition = "none";
-      // 利用最新的索引号乘以宽度 去滚动图片
-      var translateY = -index * h;
-      state.style.transform = "translateY(" + translateY + "px)";
-    } else if (index < 0) {
-      index = 3;
-      // 去掉过渡效果 快速跳到目标位置
-      state.style.transition = "none";
-      // 利用最新的索引号乘以宽度 去滚动图片
-      var translateY = -index * h;
-      state.style.transform = "translateY(" + translateY + "px)";
+  var stateBody = document.querySelector(".state-body");
+  var stateBody1 = document.querySelector(".state-body1");
+  console.log(document.querySelector("state-body"));
+  stateBody1.innerHTML = stateBody.innerHTML;
+  setInterval(() => {
+    if (state.scrollTop >= stateBody.scrollHeight) {
+      state.scrollTop = 0;
+    } else {
+      state.scrollTop++;
     }
-  });
-
-  clearInterval(timer);
-  timer = setInterval(function () {
-    index++;
-    var translateY = -index * h;
-    state.style.transition = "all .3s";
-    state.style.transform = "translateY(" + translateY + "px)";
-  }, 2000);
+  }, 20);
 })();
 
 (function () {

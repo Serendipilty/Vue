@@ -25,7 +25,7 @@ function time() {
   function getPlan() {
     $.ajax({
       url: "data/plan.json",
-      type: "get",
+      type: "GET",
       dataType: "JSON",
       data: {},
       success: function (res) {

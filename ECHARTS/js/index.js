@@ -50,7 +50,6 @@ function time() {
   var state = document.querySelector(".state");
   var stateBody = document.querySelector(".state-body");
   var stateBody1 = document.querySelector(".state-body1");
-  console.log(document.querySelector("state-body"));
   stateBody1.innerHTML = stateBody.innerHTML;
   setInterval(() => {
     if (state.scrollTop >= stateBody.scrollHeight) {

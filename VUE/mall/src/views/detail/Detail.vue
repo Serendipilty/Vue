@@ -10,6 +10,7 @@
         @imageLoad="imageLoad"
       ></detail-goods-info>
       <detail-param-info :paramInfo="paramInfo"></detail-param-info>
+      <detail-comment-info :commentInfo="commentInfo"></detail-comment-info>
     </scroll>
   </div>
 </template>
@@ -21,6 +22,7 @@ import DetailBaseInfo from "./childComps/DetailBaseInfo.vue";
 import DetailShopInfo from "./childComps/DetailShopInfo.vue";
 import DetailGoodsInfo from "./childComps/DetailGoodsInfo.vue";
 import DetailParamInfo from "./childComps/DetailParamInfo.vue";
+import DetailCommentInfo from "./childComps/DetailCommentInfo.vue";
 
 import Scroll from "components/common/scroll/Scroll.vue";
 
@@ -35,6 +37,7 @@ export default {
     DetailShopInfo,
     DetailGoodsInfo,
     DetailParamInfo,
+    DetailCommentInfo,
     Scroll,
   },
   data() {
@@ -45,6 +48,7 @@ export default {
       shop: {},
       detailInfo: {},
       paramInfo: {},
+      commentInfo: {},
     };
   },
   created() {
@@ -76,6 +80,11 @@ export default {
         data.itemParams.info,
         data.itemParams.rule
       );
+
+      // 6. 取出评论的信息
+      if (data.rate.cRate !== 0) {
+        this.commentInfo = data.rate.list[0];
+      }
     });
   },
 

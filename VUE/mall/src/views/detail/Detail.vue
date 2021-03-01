@@ -11,6 +11,7 @@
       ></detail-goods-info>
       <detail-param-info :paramInfo="paramInfo"></detail-param-info>
       <detail-comment-info :commentInfo="commentInfo"></detail-comment-info>
+      <goods-list :goods="recommends"></goods-list>
     </scroll>
   </div>
 </template>
@@ -23,10 +24,19 @@ import DetailShopInfo from "./childComps/DetailShopInfo.vue";
 import DetailGoodsInfo from "./childComps/DetailGoodsInfo.vue";
 import DetailParamInfo from "./childComps/DetailParamInfo.vue";
 import DetailCommentInfo from "./childComps/DetailCommentInfo.vue";
+import GoodsList from "components/content/goods/GoodsList.vue";
 
 import Scroll from "components/common/scroll/Scroll.vue";
 
-import { getDetail, Goods, Shop, GoodsParam } from "network/detail";
+import {
+  getDetail,
+  getRecommend,
+  Goods,
+  Shop,
+  GoodsParam,
+} from "network/detail";
+import { debounce } from "common/utils";
+import { itemListenerMixin } from "common/mixin";
 
 export default {
   name: "Detail",
@@ -38,8 +48,10 @@ export default {
     DetailGoodsInfo,
     DetailParamInfo,
     DetailCommentInfo,
+    GoodsList,
     Scroll,
   },
+  mixins: [itemListenerMixin],
   data() {
     return {
       iid: null,
@@ -49,6 +61,7 @@ export default {
       detailInfo: {},
       paramInfo: {},
       commentInfo: {},
+      recommends: [],
     };
   },
   created() {
@@ -81,13 +94,21 @@ export default {
         data.itemParams.rule
       );
 
-      // 6. 取出评论的信息
+      // 6. 获取评论的信息
       if (data.rate.cRate !== 0) {
         this.commentInfo = data.rate.list[0];
       }
     });
-  },
 
+    // 3. 请求推荐数据
+    getRecommend().then((res) => {
+      this.recommends = res.data.list;
+    });
+  },
+  mouted() {},
+  destroyed() {
+    this.$bus.$off("itemImgLoad", this.itemImgListener);
+  },
   methods: {
     imageLoad() {
       this.$refs.scroll.refresh();

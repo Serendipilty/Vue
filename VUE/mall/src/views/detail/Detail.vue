@@ -28,6 +28,8 @@
       ></detail-comment-info>
       <goods-list ref="recommend" :goods="recommends"></goods-list>
     </scroll>
+    <detail-bottom-bar @addToCart="addToCart"></detail-bottom-bar>
+    <back-top @click.native="backClick" v-show="isShowBackTop"></back-top>
   </div>
 </template>
 
@@ -39,9 +41,10 @@ import DetailShopInfo from "./childComps/DetailShopInfo.vue";
 import DetailGoodsInfo from "./childComps/DetailGoodsInfo.vue";
 import DetailParamInfo from "./childComps/DetailParamInfo.vue";
 import DetailCommentInfo from "./childComps/DetailCommentInfo.vue";
-import GoodsList from "components/content/goods/GoodsList.vue";
+import DetailBottomBar from "./childComps/DetailBottomBar.vue";
 
 import Scroll from "components/common/scroll/Scroll.vue";
+import GoodsList from "components/content/goods/GoodsList.vue";
 
 import {
   getDetail,
@@ -51,7 +54,7 @@ import {
   GoodsParam,
 } from "network/detail";
 import { debounce } from "common/utils";
-import { itemListenerMixin } from "common/mixin";
+import { itemListenerMixin, backTopMixin } from "common/mixin";
 
 export default {
   name: "Detail",
@@ -64,9 +67,10 @@ export default {
     DetailParamInfo,
     DetailCommentInfo,
     GoodsList,
+    DetailBottomBar,
     Scroll,
   },
-  mixins: [itemListenerMixin],
+  mixins: [itemListenerMixin, backTopMixin],
   data() {
     return {
       iid: null,
@@ -137,7 +141,6 @@ export default {
       this.themeTopYs.push(this.$refs.params.$el.offsetTop);
       this.themeTopYs.push(this.$refs.comment.$el.offsetTop);
       this.themeTopYs.push(this.$refs.recommend.$el.offsetTop);
-      console.log(this.themeTopYs);
     },
 
     titleClick(index) {
@@ -159,6 +162,22 @@ export default {
           this.$refs.nav.currentIndex = this.currentIndex;
         }
       }
+
+      this.isShowBackTop = -position.y > 1000;
+    },
+
+    addToCart() {
+      // 1. 获取购物车需要展示的信息
+      const product = {};
+      product.image = this.topImages[0];
+      product.title = this.goods.title;
+      product.desc = this.goods.desc;
+      product.price = this.goods.newPrice;
+      product.realPrice = this.goods.realPrice;
+      product.iid = this.iid;
+
+      // 2. 将商品添加到购物车
+      this.$store.commit("addCart", product);
     },
   },
 };
@@ -173,7 +192,7 @@ export default {
 }
 .content {
   position: relative;
-  height: calc(100% - 44px);
+  height: calc(100% - 44px - 49px);
 }
 .detail-nav {
   position: relative;

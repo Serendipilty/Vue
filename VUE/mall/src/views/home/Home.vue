@@ -137,12 +137,12 @@ export default {
     backClick() {
       this.$refs.scroll.scrollTo(0, 0);
     },
-    contentScroll(prosition) {
+    contentScroll(position) {
       // 1. 判断BackTop是否显示
-      this.isShowBackTop = -prosition.y > 1000;
+      this.isShowBackTop = -position.y > 1000;
 
-      // 2. 决定tabControl是否吸顶(prosition:fixed)
-      this.isTabFixed = -prosition.y > this.tabOffsetTop;
+      // 2. 决定tabControl是否吸顶(position:fixed)
+      this.isTabFixed = -position.y > this.tabOffsetTop;
     },
 
     loadMore() {

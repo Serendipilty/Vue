@@ -38,8 +38,12 @@
               admin<i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item icon="el-icon-plus">个人信息</el-dropdown-item>
-              <el-dropdown-item icon="el-icon-check">退出登录</el-dropdown-item>
+              <el-dropdown-item icon="el-icon-s-custom"
+                >个人信息</el-dropdown-item
+              >
+              <el-dropdown-item icon="el-icon-s-unfold"
+                >退出登录</el-dropdown-item
+              >
             </el-dropdown-menu>
           </el-dropdown>
         </div>
@@ -88,8 +92,35 @@
       </div>
     </el-header>
     <el-container>
-      <el-aside width="200px">Aside</el-aside>
-      <el-main>Main</el-main>
+      <el-aside :width="isCollapse ? '65px' : '200px'">
+        <el-menu default-active="1-1" :collapse="isCollapse" router>
+          <el-submenu
+            v-for="menu in menuData"
+            :key="menu.id"
+            :index="menu.route"
+          >
+            <template slot="title">
+              <i :class="menu.icon"></i>
+              <span>{{ menu.name }}</span>
+            </template>
+            <el-menu-item
+              v-for="item in menu.children"
+              :key="item.id"
+              :index="item.route"
+            >
+              <i :class="item.icon"></i>{{ item.name }}</el-menu-item
+            >
+          </el-submenu>
+        </el-menu>
+      </el-aside>
+      <el-main>
+        <el-tabs type="card">
+          <el-tab-pane label="用户管理" name="first">用户管理</el-tab-pane>
+          <el-tab-pane label="配置管理" name="second">配置管理</el-tab-pane>
+          <el-tab-pane label="角色管理" name="third">角色管理</el-tab-pane>
+        </el-tabs>
+        <router-view></router-view>
+      </el-main>
     </el-container>
   </el-container>
 </template>
@@ -98,6 +129,72 @@
 export default {
   data() {
     return {
+      menuData: [
+        {
+          id: 1,
+          name: "首页",
+          route: "",
+          icon: "el-icon-house",
+          children: [
+            {
+              id: "1-1",
+              name: "首页",
+              route: "first",
+              icon: "el-icon-house",
+            },
+            {
+              id: "1-2",
+              name: "看板",
+              route: "bulletin",
+              icon: "el-icon-monitor",
+            },
+            {
+              id: "1-3",
+              name: "工作台",
+              route: "2first",
+              icon: "el-icon-setting",
+            },
+          ],
+        },
+        {
+          id: 2,
+          name: "配置",
+          route: "",
+          icon: "el-icon-setting",
+          children: [
+            {
+              id: "2-1",
+              name: "个人中心",
+              route: "/first",
+              icon: "el-icon-user",
+            },
+            {
+              id: "2-2",
+              name: "用户管理",
+              route: "/bulletin",
+              icon: "el-icon-document-remove",
+            },
+            {
+              id: "2-3",
+              name: "角色管理",
+              route: "/first",
+              icon: "el-icon-tickets",
+            },
+            {
+              id: "2-4",
+              name: "部门管理",
+              route: "/first",
+              icon: "el-icon-document",
+            },
+            {
+              id: "2-5",
+              name: "权限管理",
+              route: "/first",
+              icon: "el-icon-view",
+            },
+          ],
+        },
+      ],
       noticeData: [
         {
           id: 1,
@@ -120,6 +217,7 @@ export default {
         layout: "常规",
         theme: "蓝白",
       },
+      isCollapse: false,
     };
   },
   methods: {
@@ -232,5 +330,35 @@ export default {
 
 .message .el-avatar {
   margin: 0 10px;
+}
+
+.el-container {
+  height: 100vh;
+}
+
+.el-menu {
+  height: 100%;
+}
+
+.el-main {
+  padding: 0;
+  background-color: #f6f8f9;
+}
+
+.tabs {
+  display: flex;
+  align-items: center;
+  height: 50px;
+  padding: 0 20px;
+  background-color: #fff;
+}
+
+.fold {
+  width: 30px;
+  cursor: pointer;
+}
+
+.el-tabs__header {
+  margin: 0;
 }
 </style>

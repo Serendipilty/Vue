@@ -208,7 +208,7 @@ h1 {
 
 .login-right {
   flex: 1;
-  background: url(../assets/poster.svg) no-repeat;
+  background: url(../../assets/poster.svg) no-repeat;
   background-size: 80%;
   background-position: center;
   background-color: #ebf4ff;

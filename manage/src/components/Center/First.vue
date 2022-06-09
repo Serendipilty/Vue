@@ -35,33 +35,15 @@
             <i class="el-icon-warning-outline"></i>信息
           </div>
           <el-descriptions :column="2" size="small" border>
-            <el-descriptions-item label="vue" labelClassName="label-style"
-              >^2.6.14</el-descriptions-item
-            >
-            <el-descriptions-item label="@vue/cli" labelClassName="label-style"
-              >^3.6.2</el-descriptions-item
-            >
-            <el-descriptions-item label="vuex" labelClassName="label-style"
-              >^2.6.14</el-descriptions-item
-            >
-            <el-descriptions-item
-              label="vue-router"
-              labelClassName="label-style"
-              >^3.5.3</el-descriptions-item
-            >
-            <el-descriptions-item
-              label="element-ui"
-              labelClassName="label-style"
-              >^2.15.6</el-descriptions-item
-            >
-            <el-descriptions-item label="axios" labelClassName="label-style"
-              >^0.24.0</el-descriptions-item
-            >
-            <el-descriptions-item label="授权渠道" labelClassName="label-style"
-              ><el-tag type="" effect="light"
-                >开源</el-tag
-              ></el-descriptions-item
-            >
+            <el-descriptions-item label="vue" labelClassName="label-style">^2.6.14</el-descriptions-item>
+            <el-descriptions-item label="@vue/cli" labelClassName="label-style">^3.6.2</el-descriptions-item>
+            <el-descriptions-item label="vuex" labelClassName="label-style">^2.6.14</el-descriptions-item>
+            <el-descriptions-item label="vue-router" labelClassName="label-style">^3.5.3</el-descriptions-item>
+            <el-descriptions-item label="element-ui" labelClassName="label-style">^2.15.6</el-descriptions-item>
+            <el-descriptions-item label="axios" labelClassName="label-style">^0.24.0</el-descriptions-item>
+            <el-descriptions-item label="授权渠道" labelClassName="label-style">
+              <el-tag type="" effect="light">开源</el-tag>
+            </el-descriptions-item>
           </el-descriptions>
         </el-card>
       </el-col>
@@ -74,13 +56,16 @@
           <div class="chart-container" id="map"></div>
         </el-card>
       </el-col>
-      <el-col :span="12"><el-card></el-card></el-col>
+      <el-col :span="12">
+        <el-card></el-card>
+      </el-col>
     </el-row>
   </div>
 </template>
 
 <script>
 import * as echarts from "echarts";
+import china from "@/assets/china.js";
 
 export default {
   data() {
@@ -524,7 +509,7 @@ export default {
 }
 
 .chart-header {
-  padding: 14px;
+  padding: 16px;
   border-bottom: 1px solid #ebeef5;
   color: #626b7d;
 }
@@ -534,7 +519,7 @@ export default {
 }
 
 .chart-body {
-  height: 150px;
+  height: 270px;
 }
 
 .chart-footer {
@@ -546,7 +531,7 @@ export default {
 }
 
 .el-descriptions {
-  height: 190px;
+  height: 310.2px;
   padding: 10px 20px;
 }
 
@@ -558,6 +543,6 @@ export default {
 }
 
 .chart-container {
-  height: 190px;
+  height: 377px;
 }
 </style>

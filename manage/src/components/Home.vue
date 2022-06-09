@@ -20,51 +20,32 @@
                 <i class="el-icon-circle-close"></i>清空消息
               </div>
             </div>
-            <el-badge :value="3" class="item" slot="reference"
-              ><i class="el-icon-bell"></i
-            ></el-badge>
+            <el-badge :value="3" class="item" slot="reference"><i class="el-icon-bell"></i></el-badge>
           </el-popover>
         </div>
         <div class="operation">
           <i class="el-icon-brush" @click="drawer = true"></i>
         </div>
-        <div class="operation"><i class="el-icon-refresh"></i></div>
+        <div class="operation" @click="progress"><i class="el-icon-refresh"></i></div>
         <div class="message">
-          <el-avatar
-            src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
-          ></el-avatar>
+          <el-avatar src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
           <el-dropdown trigger="hover">
             <span class="el-dropdown-link">
               admin<i class="el-icon-arrow-down el-icon--right"></i>
             </span>
             <el-dropdown-menu slot="dropdown">
-              <el-dropdown-item icon="el-icon-s-custom"
-                >个人信息</el-dropdown-item
-              >
-              <el-dropdown-item icon="el-icon-s-unfold"
-                >退出登录</el-dropdown-item
-              >
+              <el-dropdown-item icon="el-icon-s-custom">个人信息</el-dropdown-item>
+              <el-dropdown-item icon="el-icon-s-unfold">退出登录</el-dropdown-item>
             </el-dropdown-menu>
           </el-dropdown>
         </div>
         <el-drawer title="主题配置" :visible.sync="drawer" size="20%">
           <div class="drawer-content">
-            <el-form
-              :model="configure"
-              label-position="left"
-              label-width="120px"
-              size="small"
-            >
+            <el-form :model="configure" label-position="left" label-width="120px" size="small">
               <el-form-item>
-                <span slot="label"
-                  >布局
-                  <el-tooltip
-                    class="item"
-                    :enterable="false"
-                    content="布局配置仅在电脑视窗下生效，手机视窗时将默认锁定为纵向布局"
-                    placement="top"
-                    ><i class="el-icon-question"></i></el-tooltip
-                ></span>
+                <span slot="label">布局
+                  <el-tooltip class="item" :enterable="false" content="布局配置仅在电脑视窗下生效，手机视窗时将默认锁定为纵向布局" placement="top"><i class="el-icon-question"></i></el-tooltip>
+                </span>
                 <el-select placeholder="常规" v-model="configure.layout">
                   <el-option label="常规" value="常规"></el-option>
                   <el-option label="纵向" value="纵向"></el-option>
@@ -81,9 +62,7 @@
                 </el-select>
               </el-form-item>
               <el-form-item>
-                <span slot="label"
-                  >菜单背景<i class="el-icon-question"></i
-                ></span>
+                <span slot="label">菜单背景<i class="el-icon-question"></i></span>
               </el-form-item>
             </el-form>
             <div class="drawer-footer"></div>
@@ -94,22 +73,14 @@
     <el-container>
       <el-aside :width="isCollapse ? '65px' : '200px'">
         <el-menu default-active="1-1" :collapse="isCollapse" router>
-          <el-submenu
-            v-for="menu in menuData"
-            :key="menu.id"
-            :index="menu.route"
-          >
+          <el-submenu v-for="menu in menuData" :key="menu.id" :index="menu.route">
             <template slot="title">
               <i :class="menu.icon"></i>
               <span>{{ menu.name }}</span>
             </template>
-            <el-menu-item
-              v-for="item in menu.children"
-              :key="item.id"
-              :index="item.route"
-            >
-              <i :class="item.icon"></i>{{ item.name }}</el-menu-item
-            >
+            <el-menu-item v-for="item in menu.children" :key="item.id" :index="item.route">
+              <i :class="item.icon"></i>{{ item.name }}
+            </el-menu-item>
           </el-submenu>
         </el-menu>
       </el-aside>
@@ -223,6 +194,11 @@ export default {
   methods: {
     clearNotice() {
       this.noticeData = [];
+    },
+
+    progress() {
+      this.$progress.init.set();
+      this.$progress.speed.run("1000");
     },
   },
 };

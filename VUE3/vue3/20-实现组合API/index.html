@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script src="./index.js"></script>
+    <script>
+      const proxyUser1 = shallowReactive({
+        name: "小明",
+        car: { color: "red" },
+      });
+      //   proxyUser1.name = "小红";
+      //   proxyUser1.car.color = "blue";
+      //   delete proxyUser1.name;
+      //   delete proxyUser1.car.color;
+
+      const proxyUser2 = reactive({
+        name: "小明",
+        car: { color: "red" },
+      });
+      //   proxyUser2.name = "小红";
+      //   proxyUser2.car.color = "blue";
+      //   delete proxyUser2.name;
+      //   delete proxyUser2.car.color;
+
+      // ================================
+
+      const proxyUser3 = shallowReadonly({
+        name: "小明",
+        car: { color: "red" },
+      });
+      //   proxyUser3.name;
+      //   proxyUser3.name = "小红";
+      //   proxyUser3.car.color = "blue";
+      //   delete proxyUser3.name;
+      //   delete proxyUser3.car.color;
+
+      const proxyUser4 = readonly({
+        name: "小明",
+        car: { color: "red" },
+      });
+      //   proxyUser4.name;
+      //   proxyUser4.name = "小红";
+      //   proxyUser4.car.color = "blue";
+      //   delete proxyUser4.name;
+      //   delete proxyUser4.car.color;
+
+      // ================================
+
+      const ref1 = shallowRef({
+        name: "小明",
+        car: { color: "red" },
+      });
+      //   ref1.value;
+      //   ref1.value = "";
+      //   ref1.value.car = "blue";
+
+      const ref2 = ref({
+        name: "小明",
+        car: { color: "red" },
+      });
+      //   ref2.value;
+      //   ref2.value = "";
+      //   ref2.value.car = "blue";
+
+      console.log(isRef(ref({})));
+      console.log(isReactive(reactive({})));
+      console.log(isReadonly(readonly({})));
+      console.log(isProxy(reactive({})));
+      console.log(isProxy(readonly({})));
+    </script>
+  </body>
+</html>

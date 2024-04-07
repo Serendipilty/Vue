@@ -1,7 +1,7 @@
 // 导入{}中定义的变量
 import { flag } from "./59.1-ES6的模块化实现-导出.js";
 if (flag) {
-  console.log("导入成功");
+	console.log("导入成功");
 }
 
 // 直接导入export定义的变量

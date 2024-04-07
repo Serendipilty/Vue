@@ -15,9 +15,8 @@ export default {
   },
   destroyed() {
     console.log("Profile destroyed");
-  },
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>

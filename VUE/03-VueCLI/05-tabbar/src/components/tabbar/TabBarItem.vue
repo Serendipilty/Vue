@@ -19,8 +19,8 @@ export default {
     path: String,
     activeColor: {
       type: String,
-      default: "#4dafe2",
-    },
+      default: "#4dafe2"
+    }
   },
   data() {
     return {
@@ -33,13 +33,13 @@ export default {
     },
     activeStyle() {
       return this.isActive ? { color: this.activeColor } : {};
-    },
+    }
   },
   methods: {
     itemClick() {
       this.$router.replace(this.path);
-    },
-  },
+    }
+  }
 };
 </script>
 

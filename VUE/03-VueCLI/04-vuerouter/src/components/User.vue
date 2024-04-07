@@ -13,7 +13,7 @@ export default {
   computed: {
     userId() {
       return this.$route.params.userId;
-    },
+    }
   },
   created() {
     console.log("User created");
@@ -26,10 +26,9 @@ export default {
     btnClick() {
       console.log(this.$router);
       console.log(this.$route);
-    },
-  },
+    }
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>

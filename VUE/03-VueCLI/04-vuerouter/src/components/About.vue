@@ -14,9 +14,8 @@ export default {
   },
   destroyed() {
     console.log("About destroyed");
-  },
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>

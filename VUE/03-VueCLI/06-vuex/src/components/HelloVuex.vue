@@ -9,12 +9,11 @@
 
 <script>
 export default {
-  name: "HelloVuex",
+  name: "HelloVuex"
   //   props: {
   //     counter: Number,
   //   },
 };
 </script>
 
-<style>
-</style>
+<style></style>

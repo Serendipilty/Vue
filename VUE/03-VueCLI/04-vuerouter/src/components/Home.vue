@@ -14,7 +14,7 @@ export default {
   name: "Home",
   data() {
     return {
-      path: "",
+      path: ""
     };
   },
   created() {
@@ -33,7 +33,7 @@ export default {
   deactivated() {
     // 不活跃
     console.log("deactivated");
-  },
+  }
   // beforeRouteLeave(to, from, next) {
   //   console.log(this.$route.path);
   //   this.path = this.$route.path;
@@ -42,5 +42,4 @@ export default {
 };
 </script>
 
-<style>
-</style>
+<style></style>

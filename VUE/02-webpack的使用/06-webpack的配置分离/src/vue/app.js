@@ -1,12 +1,12 @@
 export default {
-  template: `
+	template: `
       <div>
         <h2>{{message}}</h2>
       </div>
     `,
-  data() {
-    return {
-      message: "Hello Webpack",
-    };
-  },
+	data() {
+		return {
+			message: "Hello Webpack",
+		};
+	},
 };

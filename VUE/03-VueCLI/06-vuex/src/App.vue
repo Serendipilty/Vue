@@ -37,11 +37,11 @@ import { INCREMENT } from "./store/mutations-types";
 export default {
   name: "App",
   components: {
-    HelloVuex,
+    HelloVuex
   },
   data() {
     return {
-      message: "app组件",
+      message: "app组件"
       // counter: 0,
     };
   },
@@ -65,7 +65,7 @@ export default {
       // 2.特殊的提交风格
       this.$store.commit({
         type: "incrementCount",
-        count,
+        count
       });
     },
     addStudent() {
@@ -85,7 +85,7 @@ export default {
       //     console.log("异步请求完成");
       //   },
       // });
-      this.$store.dispatch("aUpdateInfo", "actions参数").then((res) => {
+      this.$store.dispatch("aUpdateInfo", "actions参数").then(res => {
         console.log("Promise请求完成");
         console.log(res);
       });
@@ -93,12 +93,11 @@ export default {
     updateName() {
       this.$store.commit("updateName", "索隆");
     },
-    asyncUpdateName(){
-      this.$store.dispatch('aUpdateName')
+    asyncUpdateName() {
+      this.$store.dispatch("aUpdateName");
     }
-  },
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>

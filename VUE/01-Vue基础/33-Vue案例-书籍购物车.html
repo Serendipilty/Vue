@@ -1,164 +1,172 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-    <style>
-      .shopCart {
-        width: 600px;
-        margin: auto;
-      }
-      table {
-        width: 100%;
-        text-align: center;
-        border: 1px solid #ddd;
-        border-collapse: collapse;
-        border-spacing: 0;
-      }
-      th {
-        background-color: #f7f7f7;
-        color: #5c6b77;
-      }
-      th,
-      td {
-        padding: 8px 16px;
-        border: 1px solid #ddd;
-      }
-      .count button {
-        margin: 0;
-        padding: 0;
-        border: 1px solid #888;
-        border-radius: 4px;
-        height: 18px;
-        width: 18px;
-        font-size: 14px;
-        text-align: center;
-        line-height: 18px;
-        background-color: #fff;
-      }
-      p {
-        padding: 0;
-        margin: 0;
-      }
-      h2 {
-        text-align: center;
-      }
-    </style>
-  </head>
 
-  <body>
-    <div id="app">
-      <div class="shopCart" v-if="movies.length">
-        <table>
-          <thead>
-            <tr>
-              <th></th>
-              <th>书籍名称</th>
-              <th>出版日期</th>
-              <th>价格</th>
-              <th>购买数量</th>
-              <th>操作</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr v-for="(item,index) in movies">
-              <td>{{item.id}}</td>
-              <td>{{item.name}}</td>
-              <td>{{item.date}}</td>
-              <td>{{item.price | showPrice}}</td>
-              <td class="count">
-                <button @click="decrement(index)" :disabled="item.count <= 1">
-                  -
-                </button>
-                {{item.count}}
-                <button @click="increment(index)">+</button>
-              </td>
-              <td><button @click="removeHandle">移除</button></td>
-            </tr>
-          </tbody>
-        </table>
-        <p>总价:{{totalPrice | showPrice}}</p>
-      </div>
-      <h2 v-else>购物车为空</h2>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+  <style>
+    .shopCart {
+      width: 600px;
+      margin: auto;
+    }
+
+    table {
+      width: 100%;
+      text-align: center;
+      border: 1px solid #ddd;
+      border-collapse: collapse;
+      border-spacing: 0;
+    }
+
+    th {
+      background-color: #f7f7f7;
+      color: #5c6b77;
+    }
+
+    th,
+    td {
+      padding: 8px 16px;
+      border: 1px solid #ddd;
+    }
+
+    .count button {
+      margin: 0;
+      padding: 0;
+      border: 1px solid #888;
+      border-radius: 4px;
+      height: 18px;
+      width: 18px;
+      font-size: 14px;
+      text-align: center;
+      line-height: 18px;
+      background-color: #fff;
+    }
+
+    p {
+      padding: 0;
+      margin: 0;
+    }
+
+    h2 {
+      text-align: center;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="shopCart" v-if="movies.length">
+      <table>
+        <thead>
+          <tr>
+            <th></th>
+            <th>书籍名称</th>
+            <th>出版日期</th>
+            <th>价格</th>
+            <th>购买数量</th>
+            <th>操作</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(item,index) in movies">
+            <td>{{item.id}}</td>
+            <td>{{item.name}}</td>
+            <td>{{item.date}}</td>
+            <td>{{item.price | showPrice}}</td>
+            <td class="count">
+              <button @click="decrement(index)" :disabled="item.count <= 1">
+                -
+              </button>
+              {{item.count}}
+              <button @click="increment(index)">+</button>
+            </td>
+            <td><button @click="removeHandle">移除</button></td>
+          </tr>
+        </tbody>
+      </table>
+      <p>总价:{{totalPrice | showPrice}}</p>
     </div>
+    <h2 v-else>购物车为空</h2>
+  </div>
 
-    <!-- 导入 vue 文件 -->
-    <script src="./js/vue.js"></script>
-    <script>
-      const app = new Vue({
-        el: "#app",
-        data: {
-          movies: [
-            {
-              id: 1,
-              name: "《海贼王》",
-              date: "1997-01",
-              price: 120.0,
-              count: 1,
-              isShow: true,
-            },
-            {
-              id: 2,
-              name: "《火影忍者》",
-              date: "1999-01",
-              price: 100.0,
-              count: 1,
-              isShow: true,
-            },
-            {
-              id: 3,
-              name: "《刀剑神域》",
-              date: "2012-01",
-              price: 90.0,
-              count: 1,
-              isShow: true,
-            },
-            {
-              id: 4,
-              name: "《加速世界》",
-              date: "2009-01",
-              price: 85.0,
-              count: 1,
-              isShow: true,
-            },
-          ],
-        },
-        computed: {
-          totalPrice() {
-            // let result = 0;
-            // for (const item of this.movies) {
-            //   result += item.price * item.count;
-            // }
-            // return result;
+  <!-- 导入 vue 文件 -->
+  <script src="./js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        movies: [
+          {
+            id: 1,
+            name: "《海贼王》",
+            date: "1997-01",
+            price: 120.0,
+            count: 1,
+            isShow: true,
+          },
+          {
+            id: 2,
+            name: "《火影忍者》",
+            date: "1999-01",
+            price: 100.0,
+            count: 1,
+            isShow: true,
+          },
+          {
+            id: 3,
+            name: "《刀剑神域》",
+            date: "2012-01",
+            price: 90.0,
+            count: 1,
+            isShow: true,
+          },
+          {
+            id: 4,
+            name: "《加速世界》",
+            date: "2009-01",
+            price: 85.0,
+            count: 1,
+            isShow: true,
+          },
+        ],
+      },
+      computed: {
+        totalPrice() {
+          // let result = 0;
+          // for (const item of this.movies) {
+          //   result += item.price * item.count;
+          // }
+          // return result;
 
-            // reduce写法
-            return this.movies.reduce(function (preValue, value) {
-              return preValue + value.price * value.count;
-            }, 0);
-          },
+          // reduce写法
+          return this.movies.reduce(function (preValue, value) {
+            return preValue + value.price * value.count;
+          }, 0);
         },
-        methods: {
-          //   getFinalPrice(price) {
-          //     return "￥" + price.toFixed(2);
-          //   },
-          increment(index) {
-            this.movies[index].count++;
-          },
-          decrement(index) {
-            this.movies[index].count--;
-          },
-          removeHandle(index) {
-            this.movies.splice(index, 1);
-          },
+      },
+      methods: {
+        //   getFinalPrice(price) {
+        //     return "￥" + price.toFixed(2);
+        //   },
+        increment(index) {
+          this.movies[index].count++;
         },
-        filters: {
-          showPrice(price) {
-            return "￥" + price.toFixed(2);
-          },
+        decrement(index) {
+          this.movies[index].count--;
         },
-      });
-    </script>
-  </body>
+        removeHandle(index) {
+          this.movies.splice(index, 1);
+        },
+      },
+      filters: {
+        showPrice(price) {
+          return "￥" + price.toFixed(2);
+        },
+      },
+    });
+  </script>
+</body>
+
 </html>

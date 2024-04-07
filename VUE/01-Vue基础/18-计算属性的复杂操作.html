@@ -1,59 +1,61 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>Document</title>
-  </head>
 
-  <body>
-    <div id="app">
-      <h2>总价格:{{totalPrice}}</h2>
-      <h2>总价格:{{getTotalPrice()}}</h2>
-    </div>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Document</title>
+</head>
 
-    <!-- 导入 vue 文件 -->
-    <script src="./js/vue.js"></script>
-    <script>
-      const app = new Vue({
-        el: "#app",
-        data: {
-          phone: [
-            { id: 1, name: "iPhone", price: 6000 },
-            { id: 2, name: "SAMSUNG", price: 5000 },
-            { id: 3, name: "HUAWEI", price: 4000 },
-            { id: 4, name: "XIAOMI", price: 3000 },
-          ],
+<body>
+  <div id="app">
+    <h2>总价格:{{totalPrice}}</h2>
+    <h2>总价格:{{getTotalPrice()}}</h2>
+  </div>
+
+  <!-- 导入 vue 文件 -->
+  <script src="./js/vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        phone: [
+          { id: 1, name: "iPhone", price: 6000 },
+          { id: 2, name: "SAMSUNG", price: 5000 },
+          { id: 3, name: "HUAWEI", price: 4000 },
+          { id: 4, name: "XIAOMI", price: 3000 },
+        ],
+      },
+      computed: {
+        totalPrice: function () {
+          let result = 0;
+          // for (let i = 0; i < this.phone.length; i++) {
+          //   result += this.phone[i].price;
+          // }
+
+          // for (let i in this.phone) {
+          //   result += this.phone[i].price;
+          // }
+
+          for (const phone of this.phone) {
+            result += phone.price;
+          }
+          return result;
         },
-        computed: {
-          totalPrice: function () {
-            let result = 0;
-            // for (let i = 0; i < this.phone.length; i++) {
-            //   result += this.phone[i].price;
-            // }
+      },
+      methods: {
+        getTotalPrice: function () {
+          let result = 0;
 
-            // for (let i in this.phone) {
-            //   result += this.phone[i].price;
-            // }
-
-            for (const phone of this.phone) {
-              result += phone.price;
-            }
-            return result;
-          },
+          for (const phone of this.phone) {
+            result += phone.price;
+          }
+          return result;
         },
-        methods: {
-          getTotalPrice: function () {
-            let result = 0;
+      },
+    });
+  </script>
+</body>
 
-            for (const phone of this.phone) {
-              result += phone.price;
-            }
-            return result;
-          },
-        },
-      });
-    </script>
-  </body>
 </html>

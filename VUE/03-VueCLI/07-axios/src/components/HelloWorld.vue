@@ -9,18 +9,17 @@ export default {
   name: "HelloWorld",
   data() {
     return {
-      categories: "",
+      categories: ""
     };
   },
   created() {
     axios({
-      url: "http://123.207.32.32:8000/category",
-    }).then((res) => {
+      url: "http://123.207.32.32:8000/category"
+    }).then(res => {
       this.categories = res;
     });
-  },
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>

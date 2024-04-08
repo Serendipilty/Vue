@@ -1,6 +1,6 @@
 <template>
   <swiper>
-    <swiper-item v-for="item in banners">
+    <swiper-item v-for="item in banners" :key="item">
       <a href="#">
         <img :src="item.image" alt="" @load="imageLoad" />
       </a>
@@ -18,17 +18,17 @@ export default {
       type: Array,
       default() {
         return [];
-      },
-    },
+      }
+    }
   },
   data() {
     return {
-      isLoad: false,
+      isLoad: false
     };
   },
   components: {
     Swiper,
-    SwiperItem,
+    SwiperItem
   },
   methods: {
     imageLoad() {
@@ -36,10 +36,9 @@ export default {
         this.$emit("swiperImageLoad");
         this.isLoad = true;
       }
-    },
-  },
+    }
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>

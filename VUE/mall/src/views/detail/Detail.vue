@@ -52,7 +52,7 @@ import {
   getRecommend,
   Goods,
   Shop,
-  GoodsParam,
+  GoodsParam
 } from "network/detail";
 import { debounce } from "common/utils";
 import { itemListenerMixin, backTopMixin } from "common/mixin";
@@ -70,7 +70,7 @@ export default {
     DetailCommentInfo,
     GoodsList,
     DetailBottomBar,
-    Scroll,
+    Scroll
     // Toast,
   },
   mixins: [itemListenerMixin, backTopMixin],
@@ -85,7 +85,7 @@ export default {
       commentInfo: {},
       recommends: [],
       themeTopYs: [],
-      currentIndex: 0,
+      currentIndex: 0
       // message: "",
       // show: false,
     };
@@ -95,7 +95,7 @@ export default {
     this.iid = this.$route.params.iid;
 
     // 2. 根据iid请求详情数据
-    getDetail(this.iid).then((res) => {
+    getDetail(this.iid).then(res => {
       const data = res.result;
 
       // 1. 获取顶部的图片轮播数据
@@ -127,7 +127,7 @@ export default {
     });
 
     // 3. 请求推荐数据
-    getRecommend().then((res) => {
+    getRecommend().then(res => {
       this.recommends = res.data.list;
     });
   },
@@ -182,7 +182,7 @@ export default {
       product.iid = this.iid;
 
       // 2. 将商品添加到购物车
-      this.$store.dispatch("addCart", product).then((res) => {
+      this.$store.dispatch("addCart", product).then(res => {
         // 3. 添加成功
         // this.show = true;
         // this.message = res;
@@ -193,8 +193,8 @@ export default {
 
         this.$toast.show(res, 1500);
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

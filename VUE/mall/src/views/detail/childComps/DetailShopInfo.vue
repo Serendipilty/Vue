@@ -46,8 +46,8 @@ export default {
       type: Object,
       default() {
         return {};
-      },
-    },
+      }
+    }
   },
   filters: {
     sellCountFilter(value) {
@@ -56,11 +56,10 @@ export default {
         result = (value / 10000).toFixed(1) + "万";
       }
       return result;
-    },
-  },
+    }
+  }
 };
 </script>
-
 
 <style scoped>
 .shop-info {

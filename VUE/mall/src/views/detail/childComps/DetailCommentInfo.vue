@@ -37,8 +37,8 @@ export default {
       type: Object,
       default() {
         return {};
-      },
-    },
+      }
+    }
   },
   filters: {
     showDate(value) {
@@ -47,8 +47,8 @@ export default {
 
       // 2. 将date进行格式化
       return formatDate(date, "yyyy-MM-dd");
-    },
-  },
+    }
+  }
 };
 </script>
 

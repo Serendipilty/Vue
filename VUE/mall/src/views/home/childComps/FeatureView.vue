@@ -8,7 +8,7 @@
 
 <script>
 export default {
-  name: "FeatrueView",
+  name: "FeatrueView"
 };
 </script>
 

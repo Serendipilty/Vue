@@ -62,7 +62,7 @@ export default {
     TabControl,
     GoodsList,
     Scroll,
-    BackTop,
+    BackTop
   },
   mixins: [itemListenerMixin],
   data() {
@@ -72,28 +72,28 @@ export default {
       goods: {
         pop: {
           page: 0,
-          list: [],
+          list: []
         },
         new: {
           page: 0,
-          list: [],
+          list: []
         },
         sell: {
           page: 0,
-          list: [],
-        },
+          list: []
+        }
       },
       currentType: "pop",
       isShowBackTop: false,
       tabOffsetTop: 0,
       isTabFixed: false,
-      saveY: 0,
+      saveY: 0
     };
   },
   computed: {
     showGoods() {
       return this.goods[this.currentType].list;
-    },
+    }
   },
   activated() {
     this.$refs.scroll.scrollTo(0, this.saveY, 0);
@@ -157,7 +157,7 @@ export default {
     网络请求相关的方法
     */
     getHomeMultidata() {
-      getHomeMultidata().then((res) => {
+      getHomeMultidata().then(res => {
         // this.result = res;
         this.banners = res.data.banner.list;
         this.recommends = res.data.recommend.list;
@@ -166,14 +166,14 @@ export default {
 
     getHomeGoods(type) {
       const page = this.goods[type].page + 1;
-      getHomeGoods(type, page).then((res) => {
+      getHomeGoods(type, page).then(res => {
         this.goods[type].list.push(...res.data.list);
         this.goods[type].page += 1;
         // 完成上拉加载更多
         this.$refs.scroll.finishPullUp();
       });
-    },
-  },
+    }
+  }
 };
 </script>
 

@@ -30,14 +30,14 @@ export default {
       type: Object,
       default() {
         return {};
-      },
-    },
+      }
+    }
   },
   methods: {
     checkClick() {
       this.itemInfo.checked = !this.itemInfo.checked;
-    },
-  },
+    }
+  }
 };
 </script>
 

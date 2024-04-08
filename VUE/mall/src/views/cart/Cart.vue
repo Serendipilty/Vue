@@ -25,15 +25,15 @@ export default {
   components: {
     NavBar,
     CartList,
-    CartBottomBar,
+    CartBottomBar
   },
 
   computed: {
     // ...mapGetters(["cartLength", "cartList"]),
     ...mapGetters({
-      length: "cartLength",
-    }),
-  },
+      length: "cartLength"
+    })
+  }
 };
 </script>
 

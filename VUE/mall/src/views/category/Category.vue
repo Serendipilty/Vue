@@ -113,16 +113,16 @@ export default {
   name: "Category",
   data() {
     return {
-      scroll: null,
+      scroll: null
     };
   },
   // 组件创建后调用
   mounted() {
     this.scroll = new BScroll(".wrapper", {
       probeType: 3,
-      pullUpLoad: true,
+      pullUpLoad: true
     });
-    this.scroll.on("scroll", (Position) => {
+    this.scroll.on("scroll", Position => {
       // console.log(Position);
     });
 
@@ -133,8 +133,8 @@ export default {
   methods: {
     btnClick() {
       console.log("btnClick");
-    },
-  },
+    }
+  }
 };
 </script>
 

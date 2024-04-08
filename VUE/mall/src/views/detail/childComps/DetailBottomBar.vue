@@ -27,8 +27,8 @@ export default {
   methods: {
     addToCart() {
       this.$emit("addToCart");
-    },
-  },
+    }
+  }
 };
 </script>
 

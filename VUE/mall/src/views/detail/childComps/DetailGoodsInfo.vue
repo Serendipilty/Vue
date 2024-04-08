@@ -6,7 +6,7 @@
       <div class="end"></div>
     </div>
 
-    <div v-for="item in detailInfo.detailImage">
+    <div v-for="item in detailInfo.detailImage" :key="item.key">
       <div class="info-key">{{ item.key }}</div>
       <div class="info-list">
         <img
@@ -29,14 +29,14 @@ export default {
       type: Object,
       default() {
         return {};
-      },
-    },
+      }
+    }
   },
 
   data() {
     return {
       counter: 0,
-      imagesLength: 0,
+      imagesLength: 0
     };
   },
   //防止详情页内图片加载不完全而导致的better-scroll插件滚动中断
@@ -45,13 +45,13 @@ export default {
       if (++this.counter === this.imagesLength) {
         this.$emit("imageLoad");
       }
-    },
+    }
   },
   watch: {
     detailInfo() {
       this.imagesLength = this.detailInfo.detailImage[0].list.length;
-    },
-  },
+    }
+  }
 };
 </script>
 

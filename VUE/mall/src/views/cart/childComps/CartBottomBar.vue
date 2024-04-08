@@ -23,7 +23,7 @@ import { mapGetters } from "vuex";
 export default {
   name: "CartBottomBar",
   components: {
-    CheckButton,
+    CheckButton
   },
   computed: {
     ...mapGetters(["cartList"]),
@@ -31,7 +31,7 @@ export default {
       return (
         "￥" +
         this.cartList
-          .filter((item) => {
+          .filter(item => {
             return item.checked;
           })
           .reduce((preValue, item) => {
@@ -41,22 +41,22 @@ export default {
       );
     },
     checkLength() {
-      return this.cartList.filter((item) => item.checked).length;
+      return this.cartList.filter(item => item.checked).length;
     },
     isSelectAll() {
       if (this.cartList.length === 0) return false;
-      return this.cartList.every((item) => item.checked);
-    },
+      return this.cartList.every(item => item.checked);
+    }
   },
   methods: {
     checkClick() {
       if (this.isSelectAll) {
-        this.cartList.forEach((item) => (item.checked = false));
+        this.cartList.forEach(item => (item.checked = false));
       } else {
-        this.cartList.forEach((item) => (item.checked = true));
+        this.cartList.forEach(item => (item.checked = true));
       }
-    },
-  },
+    }
+  }
 };
 </script>
 

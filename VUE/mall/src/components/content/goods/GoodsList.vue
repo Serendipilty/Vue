@@ -1,6 +1,7 @@
 <template>
   <div class="goods">
-    <goods-list-item v-for="item in goods" :goodsItem="item"> </goods-list-item>
+    <goods-list-item v-for="item in goods" :key="item" :goodsItem="item">
+    </goods-list-item>
   </div>
 </template>
 
@@ -14,9 +15,9 @@ export default {
       type: Array,
       default() {
         return [];
-      },
-    },
-  },
+      }
+    }
+  }
 };
 </script>
 

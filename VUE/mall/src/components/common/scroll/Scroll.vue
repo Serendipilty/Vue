@@ -14,16 +14,16 @@ export default {
   props: {
     probeType: {
       type: Number,
-      default: 0,
+      default: 0
     },
     pullUpLoad: {
       type: Boolean,
-      default: false,
-    },
+      default: false
+    }
   },
   data() {
     return {
-      scroll: null,
+      scroll: null
     };
   },
   mounted() {
@@ -32,12 +32,12 @@ export default {
       observeDOM: true,
       click: true,
       probeType: this.probeType,
-      pullUpLoad: this.pullUpLoad,
+      pullUpLoad: this.pullUpLoad
     });
 
     // 2. 监听滚动的位置
     if (this.probeType === 2 || this.probeType === 3) {
-      this.scroll.on("scroll", (position) => {
+      this.scroll.on("scroll", position => {
         this.$emit("scroll", position);
       });
     }
@@ -61,10 +61,9 @@ export default {
     },
     getScrollY() {
       return this.scroll ? this.scroll.y : 0;
-    },
-  },
+    }
+  }
 };
 </script>
 
-<style>
-</style>
+<style></style>

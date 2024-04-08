@@ -3,6 +3,7 @@
     <scroll class="content" ref="scroll">
       <cart-list-item
         v-for="(item, index) in cartList"
+        :key="index"
         :item-info="item"
       ></cart-list-item>
     </scroll>
@@ -19,14 +20,14 @@ export default {
   name: "CartList",
   components: {
     Scroll,
-    CartListItem,
+    CartListItem
   },
   computed: {
-    ...mapGetters(["cartList"]),
+    ...mapGetters(["cartList"])
   },
   activated() {
     this.$refs.scroll.refresh();
-  },
+  }
 };
 </script>
 

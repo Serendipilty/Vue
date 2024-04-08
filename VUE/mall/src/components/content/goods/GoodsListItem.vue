@@ -17,13 +17,13 @@ export default {
       type: Object,
       default() {
         return {};
-      },
-    },
+      }
+    }
   },
   computed: {
     showImage() {
       return this.goodsItem.image || this.goodsItem.show.img;
-    },
+    }
   },
   methods: {
     imageLoad() {
@@ -31,8 +31,8 @@ export default {
     },
     itemClick() {
       this.$router.push("/detail/" + this.goodsItem.iid);
-    },
-  },
+    }
+  }
 };
 </script>
 
